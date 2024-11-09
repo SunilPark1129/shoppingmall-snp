@@ -19,30 +19,37 @@ const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <LandingPage />,
+      element: <Layout />,
       errorElement: <ErrorPage />,
-      // loader: fetch,
-    },
-    {
-      path: "/login",
-      element: <LoginPage />,
-    },
-    {
-      path: "/register",
-      element: <RegisterPage />,
-    },
-    {
-      path: "/product/:id",
-      element: <ProductDetailPage />,
-    },
-    {
-      element: <PrivateRoute permissionLevel="customer" />,
-      children: [{ path: "/cart", element: <CartPage /> }],
-      children: [{ path: "/payment", element: <PaymentPage /> }],
-    },
-    {
-      element: <PrivateRoute permissionLevel="admin" />,
-      children: [{ path: "/admin", element: <AdminPage /> }],
+      children: [
+        {
+          path: "/",
+          element: <LandingPage />,
+        },
+        {
+          path: "/login",
+          element: <LoginPage />,
+        },
+        {
+          path: "/register",
+          element: <RegisterPage />,
+        },
+        {
+          path: "/product/:id",
+          element: <ProductDetailPage />,
+        },
+        {
+          element: <PrivateRoute permissionLevel="customer" />,
+          children: [
+            { path: "/cart", element: <CartPage /> },
+            { path: "/payment", element: <PaymentPage /> },
+          ],
+        },
+        {
+          element: <PrivateRoute permissionLevel="admin" />,
+          children: [{ path: "/admin", element: <AdminPage /> }],
+        },
+      ],
     },
   ],
   {
@@ -56,9 +63,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Suspense fallback={<Loading />}>
-      <Layout>
-        <RouterProvider router={router} />
-      </Layout>
+      <RouterProvider router={router} />
     </Suspense>
   </React.StrictMode>
 );
