@@ -37,10 +37,11 @@ button {
 :root {
   --clr-primary: #fff;
   --clr-secondary: #fff;
+  --clr-drk: #222222;
 
   --clr-font: #3c3c3c;
-  --clr-font-drk: #fff;
-  --clr-font-lgt: #fff;
+  --clr-font-drk: #1e1e1e;
+  --clr-font-lgt: #e9e9e9;
 
   --clr-link: #fff;
 
@@ -50,7 +51,9 @@ button {
 
   --clr-bg: #fff;
 
-  --max-width: 2000px;
+  --w-max-l: 2000px;
+  --w-max-m: 800px;
+  --w-max-s: 400px;
 }
 
 /* --------- GLOBAL SEETING ---------- */
@@ -69,4 +72,22 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.svg-box svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.5px;
+}
+
+@media (max-width: 800px) {
+  body {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  body {
+    font-size: 0.8rem;
+  }
 }

@@ -1,8 +1,8 @@
 .navbar {
   display: flex;
   flex-direction: column;
-  gap: 3em;
-  padding: 2em 1em;
+  gap: 1em;
+  padding: 3em 1em;
 }
 
 .nav-top {
@@ -12,25 +12,49 @@
 }
 
 .input-label {
+  display: flex;
+  gap: 0.5em;
 }
 
 .input-label input {
+  border: none;
+  border-bottom: 1px solid rgb(129, 129, 129);
+  outline: none;
+}
+
+.input-label input:focus {
+  border-bottom: 1px solid rgb(29, 29, 29);
+}
+
+.nav-search {
+  cursor: pointer;
 }
 
 .nav-btns {
   display: flex;
   gap: 1em;
+  align-items: center;
+}
+
+.navbar .svg-box {
+  width: 1.5em;
+  height: 1.5em;
 }
 
 .nav-btns button {
   font-size: 1em;
+  display: flex;
+  gap: 0.25em;
+  align-items: center;
+}
+
+.nav-logo-a {
+  margin: auto;
 }
 
 .nav-logo {
-  width: 8em;
-  height: 8em;
-  border: 1px solid black;
-  margin: auto;
+  width: 200px;
+  height: 200px;
 }
 
 nav {
@@ -50,6 +74,20 @@ nav {
   padding: 0.25em 0.75em;
   display: flex;
   border: 1px solid transparent;
-  border-bottom-color: rgb(61, 61, 61);
   color: var(--clr-font);
+  font-weight: bold;
+}
+
+.nav-item a.active {
+  border-bottom-color: var(--clr-drk);
+}
+
+.nav-item:hover a {
+  border-bottom-color: var(--clr-drk);
+}
+
+@media (max-width: 800px) {
+  .nav-list {
+    display: none;
+  }
 }
