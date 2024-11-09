@@ -2,10 +2,11 @@ import React from "react";
 import "./style/navbar.css";
 import { navLayout } from "../data/navigationLinks";
 import { Link } from "react-router-dom";
+import "./style/navbar.css";
 
 function Navbar() {
   return (
-    <header>
+    <header className="navbar">
       <div className="nav-top">
         <label className="input-label">
           {/* svg */}
@@ -23,7 +24,7 @@ function Navbar() {
           {navLayout.map(({ to, label }) => {
             return (
               <li key={label} className="nav-item">
-                <Link to={to}>{label}</Link>
+                <Link to={to}>{label.toUpperCase()}</Link>
               </li>
             );
           })}

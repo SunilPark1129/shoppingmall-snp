@@ -1,1 +1,46 @@
-/*# sourceMappingURL=navbar.css.map */
+.navbar {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  padding: 2em 1em;
+}
+
+.nav-top {
+  display: flex;
+  gap: 1em;
+  margin-left: auto;
+}
+
+.nav-btns {
+  display: flex;
+  gap: 1em;
+}
+
+.nav-btns button {
+  font-size: 1em;
+}
+
+.nav-logo {
+  width: 8em;
+  height: 8em;
+  border: 1px solid black;
+  margin: auto;
+}
+
+nav {
+  margin: auto;
+}
+
+.nav-list {
+  display: flex;
+  gap: 2em;
+}
+
+.nav-item a {
+  font-size: 1em;
+  padding: 0.25em 0.75em;
+  display: flex;
+  border: 1px solid transparent;
+  border-bottom-color: rgb(61, 61, 61);
+  color: var(--clr-font);
+}/*# sourceMappingURL=navbar.css.map */
