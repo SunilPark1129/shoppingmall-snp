@@ -3,91 +3,89 @@
   flex-direction: column;
   gap: 1em;
   padding: 3em 1em;
+
+  &__top {
+    display: flex;
+    gap: 1em;
+    margin-left: auto;
+
+    &__links {
+      display: flex;
+      gap: 1em;
+      align-items: center;
+
+      a {
+        font-size: 1em;
+        display: flex;
+        gap: 0.25em;
+        align-items: center;
+        color: var(--clr-drk);
+      }
+    }
+  }
+
+  .svg-box {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  &__logo {
+    margin: auto;
+
+    &__parent {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  nav {
+    margin: auto;
+  }
+
+  &__content {
+    display: flex;
+    gap: 2em;
+
+    a {
+      font-size: 1em;
+      padding: 0.25em 0.75em;
+      display: flex;
+      border: 1px solid transparent;
+      color: var(--clr-font);
+      font-weight: bold;
+
+      &.active {
+        border-bottom-color: var(--clr-drk);
+      }
+    }
+
+    li:hover a {
+      border-bottom-color: var(--clr-drk);
+    }
+  }
 }
 
-.nav-top {
-  display: flex;
-  gap: 1em;
-  margin-left: auto;
-}
-
-.input-label {
+.searchbar {
   display: flex;
   gap: 0.5em;
-}
 
-.input-label input {
-  border: none;
-  border-bottom: 1px solid rgb(129, 129, 129);
-  outline: none;
-}
+  &__svg {
+    cursor: pointer;
+  }
 
-.input-label input:focus {
-  border-bottom: 1px solid rgb(29, 29, 29);
-}
+  input {
+    border: none;
+    border-bottom: 1px solid rgb(129, 129, 129);
+    outline: none;
+  }
 
-.nav-search {
-  cursor: pointer;
-}
-
-.nav-btns {
-  display: flex;
-  gap: 1em;
-  align-items: center;
-}
-
-.navbar .svg-box {
-  width: 1.5em;
-  height: 1.5em;
-}
-
-.nav-btns button {
-  font-size: 1em;
-  display: flex;
-  gap: 0.25em;
-  align-items: center;
-}
-
-.nav-logo-a {
-  margin: auto;
-}
-
-.nav-logo {
-  width: 200px;
-  height: 200px;
-}
-
-nav {
-  margin: auto;
-}
-
-.nav-list {
-  display: flex;
-  gap: 2em;
-}
-
-.nav-item {
-}
-
-.nav-item a {
-  font-size: 1em;
-  padding: 0.25em 0.75em;
-  display: flex;
-  border: 1px solid transparent;
-  color: var(--clr-font);
-  font-weight: bold;
-}
-
-.nav-item a.active {
-  border-bottom-color: var(--clr-drk);
-}
-
-.nav-item:hover a {
-  border-bottom-color: var(--clr-drk);
+  input:focus {
+    border-bottom: 1px solid rgb(29, 29, 29);
+  }
 }
 
 @media (max-width: 800px) {
-  .nav-list {
+  .navbar__content {
     display: none;
   }
 }

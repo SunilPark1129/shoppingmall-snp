@@ -8,33 +8,33 @@ import { SvgSearch, SvgUser, SvgTable, SvgBag } from "../svg/SVGFiles";
 function Navbar() {
   return (
     <header className="navbar">
-      <div className="nav-top">
-        <label className="input-label">
-          <div className="nav-search svg-box">{SvgSearch}</div>
+      <div className="navbar__top">
+        <label className="searchbar">
+          <div className="searchbar__svg svg-box">{SvgSearch}</div>
           <input type="text" autoComplete="off" placeholder="Search Product" />
         </label>
-        <div className="nav-btns">
-          <button>
+        <div className="navbar__top__links">
+          <Link to={"/login"}>
             <div className="svg-box">{SvgUser}</div> Login
-          </button>
-          <button>
+          </Link>
+          <Link to={"/cart"}>
             <div className="svg-box">{SvgBag}</div> Cart(0)
-          </button>
-          <button>
+          </Link>
+          <Link to={"/order"}>
             <div className="svg-box">{SvgTable}</div> My Order
-          </button>
+          </Link>
         </div>
       </div>
-      <Link className="nav-logo-a" to={"/"}>
-        <div className="nav-logo img-box">
+      <Link className="navbar__logo" to={"/"}>
+        <div className="navbar__logo__parent img-box">
           <img src="/image/sparklogo.png" alt="" />
         </div>
       </Link>
       <nav>
-        <ul className="nav-list">
+        <ul className="navbar__content">
           {navLayout.map(({ to, label }) => {
             return (
-              <li key={label} className="nav-item">
+              <li key={label}>
                 <Link to={to}>{label.toUpperCase()}</Link>
               </li>
             );
