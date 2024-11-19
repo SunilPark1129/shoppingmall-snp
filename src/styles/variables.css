@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
+/* 'Poppins', sans-serif */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+/* "Lato", sans-serif; */
+
+:root {
+  /* main colors */
+  --clr-primary: #042c54;
+  --clr-secondary: #fff;
+  --clr-drk: #222222;
+  --clr-highlight: #3c4bd2;
+
+  /* font colors */
+  --clr-font: #424242;
+  --clr-font-md: #646464;
+  --clr-font-drk: #1e1e1e;
+  --clr-font-lgt: #9c9c9c;
+  --clr-font-link: #2227c4;
+
+  /* status colors */
+  --clr-warning: #fff;
+  --clr-success: #fff;
+  --clr-default: #fff;
+
+  /* background color */
+  --clr-bg: #eaeaf2;
+  --clr-bg-lgt: #f5f5f5;
+
+  /* max width */
+  --w-max: 1888px;
+
+  /* font family */
+  --font-family-primary: 'Lato', sans-serif;
+}
