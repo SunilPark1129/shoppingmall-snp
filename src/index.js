@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/global.css';
+import './styles/variables.css';
 import reportWebVitals from './reportWebVitals';
 import store from './features/store';
 import { Provider } from 'react-redux';

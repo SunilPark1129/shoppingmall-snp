@@ -9,17 +9,18 @@
     gap: 1em;
     margin-left: auto;
 
-    &__links {
+    &-links {
       display: flex;
       gap: 1em;
       align-items: center;
 
-      a {
+      div {
         font-size: 1em;
         display: flex;
         gap: 0.25em;
         align-items: center;
         color: var(--clr-drk);
+        cursor: pointer;
       }
     }
   }
@@ -32,7 +33,7 @@
   &__logo {
     margin: auto;
 
-    &__parent {
+    .image-container {
       width: 200px;
       height: 200px;
     }
@@ -51,16 +52,21 @@
       padding: 0.25em 0.75em;
       display: flex;
       border: 1px solid transparent;
-      color: var(--clr-font);
-      font-weight: bold;
+      color: var(--clr-font-drk);
 
       &.active {
-        border-bottom-color: var(--clr-drk);
+        border-bottom-color: var(--clr-font-drk);
       }
     }
 
     li:hover a {
-      border-bottom-color: var(--clr-drk);
+      border-bottom-color: var(--clr-font-drk);
+    }
+
+    &--semi {
+      a {
+        color: var(--clr-font-md);
+      }
     }
   }
 }
@@ -77,6 +83,7 @@
     border: none;
     border-bottom: 1px solid rgb(129, 129, 129);
     outline: none;
+    background-color: transparent;
   }
 
   input:focus {

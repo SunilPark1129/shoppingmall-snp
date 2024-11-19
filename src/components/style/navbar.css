@@ -9,17 +9,18 @@
   gap: 1em;
   margin-left: auto;
 }
-.navbar__top__links {
+.navbar__top-links {
   display: flex;
   gap: 1em;
   align-items: center;
 }
-.navbar__top__links a {
+.navbar__top-links div {
   font-size: 1em;
   display: flex;
   gap: 0.25em;
   align-items: center;
   color: var(--clr-drk);
+  cursor: pointer;
 }
 .navbar .svg-box {
   width: 1.5em;
@@ -28,7 +29,7 @@
 .navbar__logo {
   margin: auto;
 }
-.navbar__logo__parent {
+.navbar__logo .image-container {
   width: 200px;
   height: 200px;
 }
@@ -44,14 +45,16 @@
   padding: 0.25em 0.75em;
   display: flex;
   border: 1px solid transparent;
-  color: var(--clr-font);
-  font-weight: bold;
+  color: var(--clr-font-drk);
 }
 .navbar__content a.active {
-  border-bottom-color: var(--clr-drk);
+  border-bottom-color: var(--clr-font-drk);
 }
 .navbar__content li:hover a {
-  border-bottom-color: var(--clr-drk);
+  border-bottom-color: var(--clr-font-drk);
+}
+.navbar__content--semi a {
+  color: var(--clr-font-md);
 }
 
 .searchbar {
@@ -65,6 +68,7 @@
   border: none;
   border-bottom: 1px solid rgb(129, 129, 129);
   outline: none;
+  background-color: transparent;
 }
 .searchbar input:focus {
   border-bottom: 1px solid rgb(29, 29, 29);
