@@ -14,6 +14,7 @@ import {
   useLocation,
   useSearchParams,
   useNavigate,
+  NavLink,
 } from 'react-router-dom';
 import { SvgSearch, SvgUser, SvgTable, SvgBag } from '../svg/SVGFiles';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,6 +24,7 @@ import {
   menuList,
   womenList,
 } from '../utils/navbarLinks';
+import HamburgerIcon from '../assets/icons/HamburgerIcon';
 
 function Navbar() {
   // temporary
@@ -35,11 +37,6 @@ function Navbar() {
   const category = query.getAll('category');
 
   let gender = null;
-  if (category.includes('male')) {
-    gender = 'male';
-  } else if (category.includes('female')) {
-    gender = 'female';
-  }
 
   const [curCategory, setCurCategory] = useState('');
   const [links, setLinks] = useState([]);
@@ -78,75 +75,71 @@ function Navbar() {
     // dispatch(logout());
   };
 
-  // need user token
-  // useEffect(() => {
-  //   if (user) {
-  //     dispatch(getCartQty());
-  //   }
-  // }, [user]);
-
   return (
     <header className="navbar">
-      <div className="navbar__top">
-        {/* admin page button */}
-        {/*         
+      {/* admin page button */}
+      {/*         
         {user && user.level === 'admin' && (
           <Link to="/admin/product?page=1">
             Admin page
           </Link>
         )}
        */}
-        <label className="searchbar">
-          <div className="searchbar__svg svg-box">{SvgSearch}</div>
-          <input
-            type="text"
-            autoComplete="off"
-            placeholder="Search Product"
-            onKeyDown={onCheckEnter}
-          />
-        </label>
-        <div className="navbar__top-links">
-          {user ? (
-            <div onClick={() => navigate('/login')}>
-              <div className="svg-box">{SvgUser}</div> Login
+      <nav className="navbar__top">
+        <div className="navbar__top-box navbar__top-box--left">
+          <Link className="navbar__logo" to={'/'}>
+            <div className="image-container">
+              <img src="/image/sparklogo.png" alt="" />
             </div>
-          ) : (
-            <div onClick={() => console.log('logout')}>
-              <div className="svg-box">{SvgUser}</div> Login
-            </div>
-          )}
-          <div onClick={() => navigate('/cart')}>
-            <div className="svg-box">{SvgBag}</div> Cart(0)
-          </div>
-          <div onClick={() => navigate('/order')}>
-            <div className="svg-box">{SvgTable}</div> My Order
-          </div>
-        </div>
-      </div>
-      <Link className="navbar__logo" to={'/'}>
-        <div className="image-container">
-          <img src="/image/sparklogo.png" alt="" />
-        </div>
-      </Link>
-      <nav>
-        <ul className="navbar__content">
-          {menuList.map(({ to, label }) => {
-            return (
-              <li key={label}>
-                <Link to={to}>{label.toUpperCase()}</Link>
-              </li>
-            );
-          })}
-        </ul>
-        {links && (
-          <ul className="navbar__content navbar__content--semi">
-            {links.map(({ label, to }) => (
-              <li key={label}>
-                <Link to={to}>{label}</Link>
-              </li>
-            ))}
+          </Link>
+          <HamburgerIcon />
+          <ul className="navbar__link-box">
+            {menuList.map(({ to, label }) => {
+              let active = false;
+              if (curCategory.includes(label.toLowerCase())) {
+                active = true;
+              }
+              const classlabel = active
+                ? 'navbar__link navbar__link--active'
+                : 'navbar__link';
+              return (
+                <li key={label}>
+                  <Link to={to} className={classlabel}>
+                    {label.toUpperCase()}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
-        )}
+        </div>
+        <div className="navbar__top-box navbar__top-box--right">
+          <label className="searchbar">
+            <div className="searchbar__svg svg-box">{SvgSearch}</div>
+            <input
+              type="text"
+              autoComplete="off"
+              placeholder="Search Product"
+              onKeyDown={onCheckEnter}
+            />
+          </label>
+          <div className="navbar__top-feature">
+            {user ? (
+              <div onClick={() => navigate('/login')}>
+                <div className="svg-box">{SvgUser}</div> Login
+              </div>
+            ) : (
+              <div onClick={() => console.log('logout')}>
+                <div className="svg-box">{SvgUser}</div> Login
+              </div>
+            )}
+            <div onClick={() => navigate('/cart')}>
+              <div className="svg-box">{SvgBag}</div> Cart(0)
+            </div>
+            <div onClick={() => navigate('/order')}>
+              <div className="svg-box">{SvgTable}</div> My Order
+            </div>
+          </div>
+        </div>
       </nav>
     </header>
   );

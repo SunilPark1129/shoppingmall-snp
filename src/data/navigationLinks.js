@@ -1,8 +1,8 @@
 export const navLayout = [
-  { to: "/", label: "new" },
-  { to: "/", label: "women" },
-  { to: "/", label: "men" },
-  { to: "/", label: "sale" },
-  { to: "/", label: "all category" },
-  { to: "/", label: "home" },
+  { to: '/new', label: 'new' },
+  { to: '/women', label: 'women' },
+  { to: '/men', label: 'men' },
+  { to: '/sale', label: 'sale' },
+  { to: '/all', label: 'all category' },
+  { to: '/', label: 'home' },
 ];
