@@ -1,0 +1,46 @@
+.skeleton__card {
+  border: none !important;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+}
+
+.skeleton__img-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4.5;
+  outline: 1px solid rgb(226, 226, 226);
+  overflow: hidden;
+}
+
+.skeleton__img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  background-color: transparent;
+  animation: 1s skeleton-process ease-in-out infinite alternate;
+}
+
+.skeleton__info {
+  padding: 0.25rem 1.5rem;
+  overflow: hidden;
+  position: relative;
+  height: 48px;
+}
+
+.skeleton__info div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(235, 235, 235);
+  right: 100%;
+}
+
+@keyframes skeleton-process {
+  100% {
+    background-color: #eeeeee;
+  }
+}/*# sourceMappingURL=skeleton.style.css.map */

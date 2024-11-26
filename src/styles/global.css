@@ -20,6 +20,11 @@ h5 {
   font-weight: 400;
   font-size: 1rem;
   color: var(--font-drk);
+  line-height: 1.2em;
+}
+div,
+p {
+  line-height: 1.5em;
 }
 a {
   text-decoration: none;
@@ -43,7 +48,12 @@ textarea {
   margin: auto;
 }
 
-/* image styling */
+.line {
+  width: 100%;
+  border-bottom: 1px solid rgb(201, 201, 201);
+}
+
+/* --------------- image styling ------------------ */
 .image-container {
   position: relative;
 }
@@ -53,6 +63,46 @@ textarea {
   height: 100%;
   position: absolute;
   object-fit: cover;
+}
+
+/* ----------------- sale styling ---------------- */
+.sale__org-price {
+  color: #6f6f6f;
+  position: relative;
+  width: max-content;
+}
+
+.sale__org-price span {
+  font-weight: 400;
+}
+
+.sale__org-line {
+  position: absolute;
+  width: 100%;
+  height: 0.15rem;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgb(224, 67, 67);
+}
+
+.sale__price-box {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+  align-items: center;
+}
+
+.sale__price-sale {
+  font-size: 0.8em;
+  color: #fff;
+  padding: 0.25em 0.75em;
+  background-color: rgb(224, 67, 67);
+  width: max-content;
+}
+
+.sale__price-applied {
+  color: rgb(224, 67, 67);
 }
 
 /* media body font-size */

@@ -15,9 +15,9 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import PrivateRoute from './routes/PrivateRoute';
 import CartPage from './pages/CartPage/CartPage';
 import AdminPage from './pages/AdminPage/AdminPage';
-import ProductDetailPage from './pages/ProductDetailPage/ProductDetailPage';
 import PaymentPage from './pages/PaymentPage/PaymentPage';
-import Loading from './components/Loading';
+import ProductDetail from './pages/ProductDetailPage/ProductDetailPage';
+import Loading from './components/common/Loading';
 
 const router = createBrowserRouter([
   {
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/product/:id',
-        element: <ProductDetailPage />,
+        element: <ProductDetail />,
       },
       {
         element: <PrivateRoute permissionLevel="customer" />,

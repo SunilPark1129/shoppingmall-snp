@@ -7,7 +7,7 @@
   /* main colors */
   --clr-primary: #042c54;
   --clr-secondary: #fff;
-  --clr-drk: #222222;
+  --clr-drk: #212529;
   --clr-highlight: #3c4bd2;
 
   /* font colors */
@@ -23,12 +23,12 @@
   --clr-default: #fff;
 
   /* background color */
-  --clr-bg: #eaeaf2;
+  --clr-bg: #faf9f8;
   --clr-bg-lgt: #f5f5f5;
 
   /* max width */
   --w-max: 2000px;
 
   /* font family */
-  /* --font-family-primary: 'Lato', sans-serif; */
+  --font-family-primary: sans-serif;
 }
