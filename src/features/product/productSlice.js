@@ -130,13 +130,7 @@ const productSlice = createSlice({
       state.success = false;
     },
     setResetProduct: (state) => {
-      state.productList = [];
-      state.selectedProduct = null;
-      state.loading = true;
-      state.page = 0;
-      state.error = '';
-      state.totalPageNum = 1;
-      state.success = false;
+      Object.assign(state, { ...initialState });
     },
   },
   extraReducers: (builder) => {
