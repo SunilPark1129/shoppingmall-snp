@@ -2,12 +2,23 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { showToastMessage } from '../common/uiSlice';
 import api from '../../utils/api';
 
+const initialState = {
+  productList: [],
+  selectedProduct: null,
+  loading: true,
+  page: 0,
+  error: '',
+  totalPageNum: 1,
+  success: false,
+};
+
 // 비동기 액션 생성
 export const getProductList = createAsyncThunk(
   'products/getProductList',
   async (query, { rejectWithValue }) => {
     try {
       const response = await api.get('/product', { params: { ...query } });
+      response.data.page = query.page;
 
       return response.data;
     } catch (error) {
@@ -106,14 +117,7 @@ export const saleProduct = createAsyncThunk(
 // 슬라이스 생성
 const productSlice = createSlice({
   name: 'products',
-  initialState: {
-    productList: [],
-    selectedProduct: null,
-    loading: true,
-    error: '',
-    totalPageNum: 1,
-    success: false,
-  },
+  initialState,
   reducers: {
     setSelectedProduct: (state, action) => {
       state.selectedProduct = action.payload;
@@ -123,6 +127,15 @@ const productSlice = createSlice({
     },
     clearError: (state) => {
       state.error = '';
+      state.success = false;
+    },
+    setResetProduct: (state) => {
+      state.productList = [];
+      state.selectedProduct = null;
+      state.loading = true;
+      state.page = 0;
+      state.error = '';
+      state.totalPageNum = 1;
       state.success = false;
     },
   },
@@ -146,8 +159,9 @@ const productSlice = createSlice({
       })
       .addCase(getProductList.fulfilled, (state, action) => {
         state.loading = false;
-        state.productList = action.payload.data;
+        state.productList = [...state.productList, ...action.payload.data];
         state.totalPageNum = action.payload.totalPageNum;
+        state.page = action.payload.page;
         state.error = '';
       })
       .addCase(getProductList.rejected, (state, action) => {
@@ -195,6 +209,10 @@ const productSlice = createSlice({
   },
 });
 
-export const { setSelectedProduct, setFilteredList, clearError } =
-  productSlice.actions;
+export const {
+  setSelectedProduct,
+  setFilteredList,
+  clearError,
+  setResetProduct,
+} = productSlice.actions;
 export default productSlice.reducer;

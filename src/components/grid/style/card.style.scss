@@ -56,3 +56,9 @@
     color: rgb(224, 67, 67);
   }
 }
+
+@media screen and (max-width: 1400px) {
+  .card__info {
+    padding: 0.25rem 0.5rem;
+  }
+}

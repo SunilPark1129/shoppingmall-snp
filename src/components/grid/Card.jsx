@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './style/card.style.css';
 import { currencyFormat } from '../../utils/number';
 import { resizeImage } from '../../utils/resizeImage';
+import useInfiniteScroll from '../../hooks/useInfiniteScroll';
+import { getProductList } from '../../features/product/productSlice';
+import { useDispatch } from 'react-redux';
 
 const smWidth = '400';
 const lgWidth = '600';
 
-function Card({ item }) {
+function Card({ item, isLast, page, totalPageNum, name, category }) {
+  const lastIdxRef = useRef(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const showProduct = (id) => {
     navigate(`/product/${id}`);
   };
+
+  const isVisible = useInfiniteScroll(lastIdxRef, { threshold: 1.0 });
+
+  useEffect(() => {
+    if (isLast && isVisible && totalPageNum > page) {
+      dispatch(getProductList({ page: page + 1, name, category }));
+    }
+  }, [isVisible]);
+
   // 세일 값
   const sale = currencyFormat(1 - item.sale / 100);
 
@@ -47,7 +62,11 @@ function Card({ item }) {
   };
 
   return (
-    <div className="card" onClick={() => showProduct(item._id)}>
+    <div
+      className="card"
+      onClick={() => showProduct(item._id)}
+      ref={lastIdxRef}
+    >
       <div className="image-container">
         {item?.image.length === 1 ? (
           <img {...firstImg} />

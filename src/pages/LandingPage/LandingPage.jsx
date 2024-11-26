@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './style/landing.style.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Banner from './components/banner/Banner';
-import { getProductList } from '../../features/product/productSlice';
+import {
+  getProductList,
+  setResetProduct,
+} from '../../features/product/productSlice';
 import Grid from '../../components/grid/Grid';
 import Skeleton from '../../components/common/Skeleton';
 
@@ -13,43 +16,37 @@ function LandingPage() {
   const [query] = useSearchParams();
   const name = query.get('name');
   const category = query.getAll('category');
-  const page = query.get('page') || 1;
+  const mounted = useRef(null);
 
-  const { loading, productList, totalPageNum } = useSelector(
+  const { loading, productList, page, totalPageNum } = useSelector(
     (state) => state.product
   );
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(getProductList({ page, name, category }));
-  }, [query]);
-
-  const handlePageClick = ({ selected }) => {
-    //  쿼리에 페이지값 바꿔주기
-    let query = `page=${selected + 1}`;
-    if (name) query = query + `&name=${name}`;
-    if (category.length !== 0) {
-      category.forEach((item) => {
-        query = query + `&category=${item}`;
-      });
+    if (mounted.current) {
+      dispatch(getProductList({ page: 1, name, category }));
+    } else {
+      mounted.current = true;
     }
-    navigate('?' + query);
-  };
 
-  if (loading)
-    return (
-      <main className="landing">
-        <div className="landing__container">
-          <Skeleton />
-        </div>
-      </main>
-    );
+    return () => {
+      dispatch(setResetProduct());
+    };
+  }, [query]);
 
   return (
     <main className="landing">
       {category.length === 0 && <Banner />}
       <div className="landing__container">
-        <Grid productList={productList} />
+        <Grid
+          productList={productList}
+          name={name}
+          category={category}
+          page={page}
+          totalPageNum={totalPageNum}
+        />
+        {loading && <Skeleton />}
       </div>
     </main>
   );

@@ -1,10 +1,10 @@
 import React from 'react';
 import './style/skeleton.style.css';
 
-const temp = new Array(8).fill();
+const temp = new Array(10).fill();
 function Skeleton() {
   return (
-    <div className="landing-content">
+    <div className="grid">
       {temp.map((_, idx) => (
         <div key={idx} className="skeleton__card">
           <div className="skeleton__img-box">
