@@ -69,11 +69,11 @@ function Card({ item, isLast, page, totalPageNum, name, category }) {
     >
       <div className="image-container">
         {item?.image.length === 1 ? (
-          <img {...firstImg} />
+          <img {...secondImg} />
         ) : (
           <>
-            <img {...firstImg} />
             <img {...secondImg} />
+            <img {...firstImg} />
           </>
         )}
       </div>

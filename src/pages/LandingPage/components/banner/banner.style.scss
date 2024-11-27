@@ -1,7 +1,7 @@
 .banner {
   display: flex;
   width: 100%;
-  max-width: 1800px;
+  max-width: var(--max-width);
   min-height: 30rem;
   position: relative;
   margin: auto;

@@ -44,7 +44,7 @@ textarea {
 
 /* max-width wrapper */
 .wrapper {
-  max-width: var(--w-max);
+  max-width: var(--max-width);
   margin: auto;
 }
 

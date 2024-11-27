@@ -1,0 +1,35 @@
+.item-empty {
+  &__content {
+    height: 90vh;
+    min-height: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--clr-font);
+  }
+
+  p {
+    color: var(--clr-font);
+    font-size: 1.2em;
+  }
+
+  a {
+    color: var(--clr-font-link);
+    text-decoration: underline;
+  }
+}

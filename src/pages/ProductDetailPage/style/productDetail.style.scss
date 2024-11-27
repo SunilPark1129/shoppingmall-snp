@@ -1,4 +1,6 @@
 .product {
+  display: flex;
+  justify-content: center;
   .wrapper {
     min-width: 16rem;
     max-width: 80rem;

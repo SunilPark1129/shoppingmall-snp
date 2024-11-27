@@ -2,7 +2,6 @@ footer .wrapper {
   width: 100%;
   padding: 4rem 1rem;
   display: flex;
-  max-width: 1800px;
   margin: auto;
   gap: 4rem;
   flex-direction: column;

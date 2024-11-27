@@ -1,1 +1,29 @@
-/*# sourceMappingURL=itemEmpty.style.css.map */
+.item-empty__content {
+  height: 90vh;
+  min-height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+}
+.item-empty__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  text-align: center;
+}
+.item-empty h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--clr-font);
+}
+.item-empty p {
+  color: var(--clr-font);
+  font-size: 1.2em;
+}
+.item-empty a {
+  color: var(--clr-font-link);
+  text-decoration: underline;
+}/*# sourceMappingURL=itemEmpty.style.css.map */

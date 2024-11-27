@@ -9,6 +9,7 @@ import {
 } from '../../features/product/productSlice';
 import Grid from '../../components/grid/Grid';
 import Skeleton from '../../components/common/Skeleton';
+import ItemEmpty from './components/itemEmpty/ItemEmpty';
 
 function LandingPage() {
   const dispatch = useDispatch();
@@ -37,7 +38,8 @@ function LandingPage() {
 
   return (
     <main className="landing">
-      {category.length === 0 && <Banner />}
+      {!name && category.length === 0 && <Banner />}
+      {!loading && productList.length === 0 && <ItemEmpty />}
       <div className="landing__container">
         <Grid
           productList={productList}
