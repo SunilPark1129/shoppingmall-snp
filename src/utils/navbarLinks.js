@@ -1,41 +1,41 @@
 export const menuList = [
-  { label: 'Women', to: '/?page=1&category=female' },
-  { label: 'Men', to: '/?page=1&category=male' },
-  { label: 'Top', to: '/?page=1&category=top' },
-  { label: 'Pants', to: '/?page=1&category=pants' },
-  { label: 'Dress', to: '/?page=1&category=dress' },
+  { label: 'Women', to: '/?category=female' },
+  { label: 'Men', to: '/?category=male' },
+  { label: 'Top', to: '/?category=top' },
+  { label: 'Pants', to: '/?category=pants' },
+  { label: 'Dress', to: '/?category=dress' },
   { label: 'HOME', to: '/' },
-  { label: 'Sale', to: '/?page=1&category=sale' },
+  { label: 'Sale', to: '/?category=sale' },
 ];
 export const womenList = [
-  { label: 'Women Top', to: '/?page=1&category=female&category=top' },
-  { label: 'Women Pants', to: '/?page=1&category=female&category=pants' },
-  { label: 'Women Dress', to: '/?page=1&category=female&category=dress' },
-  { label: 'Women Sale', to: '/?page=1&category=female&category=sale' },
+  { label: 'Women Top', to: '/?category=female&category=top' },
+  { label: 'Women Pants', to: '/?category=female&category=pants' },
+  { label: 'Women Dress', to: '/?category=female&category=dress' },
+  { label: 'Women Sale', to: '/?category=female&category=sale' },
 ];
 export const menList = [
-  { label: 'Men Top', to: '/?page=1&category=male&category=top' },
-  { label: 'Men Pants', to: '/?page=1&category=male&category=pants' },
-  { label: 'Men Sale', to: '/?page=1&category=male&category=sale' },
+  { label: 'Men Top', to: '/?category=male&category=top' },
+  { label: 'Men Pants', to: '/?category=male&category=pants' },
+  { label: 'Men Sale', to: '/?category=male&category=sale' },
 ];
 export const topList = [
-  { label: 'Women Top', to: '/?page=1&category=female&category=top' },
-  { label: 'Men Top', to: '/?page=1&category=male&category=top' },
-  { label: 'Sale Top', to: '/?page=1&category=sale&category=top' },
+  { label: 'Women Top', to: '/?category=female&category=top' },
+  { label: 'Men Top', to: '/?category=male&category=top' },
+  { label: 'Sale Top', to: '/?category=sale&category=top' },
 ];
 export const pantsList = [
-  { label: 'Women Pants', to: '/?page=1&category=female&category=pants' },
-  { label: 'Men Pants', to: '/?page=1&category=male&category=pants' },
-  { label: 'Sale Pants', to: '/?page=1&category=sale&category=pants' },
+  { label: 'Women Pants', to: '/?category=female&category=pants' },
+  { label: 'Men Pants', to: '/?category=male&category=pants' },
+  { label: 'Sale Pants', to: '/?category=sale&category=pants' },
 ];
 export const dressList = [
-  { label: 'Women Dress', to: '/?page=1&category=female&category=dress' },
-  { label: 'Women Sale', to: '/?page=1&category=female&category=sale' },
+  { label: 'Women Dress', to: '/?category=female&category=dress' },
+  { label: 'Women Sale', to: '/?category=female&category=sale' },
 ];
 export const saleList = [
-  { label: 'Top Sale', to: '/?page=1&category=sale&category=top' },
-  { label: 'Pants Sale', to: '/?page=1&category=sale&category=pants' },
-  { label: 'Dress Sale', to: '/?page=1&category=sale&category=dress' },
+  { label: 'Top Sale', to: '/?category=sale&category=top' },
+  { label: 'Pants Sale', to: '/?category=sale&category=pants' },
+  { label: 'Dress Sale', to: '/?category=sale&category=dress' },
 ];
 
 export function getLinkLists(str) {

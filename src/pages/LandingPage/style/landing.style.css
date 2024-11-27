@@ -5,6 +5,38 @@
   margin: auto;
 }
 
+.home .landing__container {
+  padding: 3em 1em;
+  gap: 6em;
+}
+
+.landing__home {
+  display: flex;
+  flex-direction: column;
+}
+.landing__home-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.landing__home-top h2 {
+  font-size: 1.4em;
+  color: var(--clr-font);
+  background-color: #782929;
+  color: #fff;
+  padding: 0.25em 1em;
+}
+.landing__home-top a {
+  color: var(--clr-font-link);
+  text-decoration: underline;
+}
+.landing__home .grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+.landing__home .grid .card {
+  margin-bottom: 0px;
+}
+
 @media screen and (max-width: 500px) {
   .landing__container {
     padding: 1rem 0;

@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 const smWidth = '400';
 const lgWidth = '600';
 
-function Card({ item, isLast, page, totalPageNum, name, category }) {
+function Card({ item, isLast, page, totalPageNum, name, category, imgFront }) {
   const lastIdxRef = useRef(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -69,11 +69,20 @@ function Card({ item, isLast, page, totalPageNum, name, category }) {
     >
       <div className="image-container">
         {item?.image.length === 1 ? (
-          <img {...secondImg} />
+          <>{imgFront ? <img {...firstImg} /> : <img {...secondImg} />}</>
         ) : (
           <>
-            <img {...secondImg} />
-            <img {...firstImg} />
+            {imgFront ? (
+              <>
+                <img {...firstImg} />
+                <img {...secondImg} />
+              </>
+            ) : (
+              <>
+                <img {...secondImg} />
+                <img {...firstImg} />
+              </>
+            )}
           </>
         )}
       </div>

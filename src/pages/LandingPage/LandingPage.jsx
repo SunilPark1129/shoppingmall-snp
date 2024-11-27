@@ -1,32 +1,38 @@
 import React, { useEffect, useRef } from 'react';
 import './style/landing.style.css';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Banner from './components/banner/Banner';
 import {
   getProductList,
+  getProductListHome,
   setResetProduct,
 } from '../../features/product/productSlice';
 import Grid from '../../components/grid/Grid';
 import Skeleton from '../../components/common/Skeleton';
 import ItemEmpty from './components/itemEmpty/ItemEmpty';
+import Home from './components/home/Home';
 
 function LandingPage() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [query] = useSearchParams();
   const name = query.get('name');
   const category = query.getAll('category');
   const mounted = useRef(null);
 
-  const { loading, productList, page, totalPageNum } = useSelector(
-    (state) => state.product
-  );
+  const { loading, productList, productListHome, page, totalPageNum } =
+    useSelector((state) => state.product);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     if (mounted.current) {
-      dispatch(getProductList({ page: 1, name, category }));
+      if (!name && category.length === 0) {
+        if (productListHome.length === 0) {
+          dispatch(getProductListHome());
+        }
+      } else {
+        dispatch(getProductList({ page: 1, name, category }));
+      }
     } else {
       mounted.current = true;
     }
@@ -36,19 +42,24 @@ function LandingPage() {
     };
   }, [query]);
 
+  if (!name && category.length === 0) {
+    return <Home loading={loading} productListHome={productListHome} />;
+  }
+
   return (
     <main className="landing">
-      {!name && category.length === 0 && <Banner />}
-      {!loading && productList.length === 0 && <ItemEmpty />}
-      <div className="landing__container">
-        <Grid
-          productList={productList}
-          name={name}
-          category={category}
-          page={page}
-          totalPageNum={totalPageNum}
-        />
-        {loading && <Skeleton />}
+      <div className="wrapper">
+        {!loading && productList.length === 0 && <ItemEmpty />}
+        <div className="landing__container">
+          <Grid
+            productList={productList}
+            name={name}
+            category={category}
+            page={page}
+            totalPageNum={totalPageNum}
+          />
+          {loading && <Skeleton />}
+        </div>
       </div>
     </main>
   );

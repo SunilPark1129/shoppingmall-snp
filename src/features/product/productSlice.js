@@ -4,6 +4,7 @@ import api from '../../utils/api';
 
 const initialState = {
   productList: [],
+  productListHome: [],
   selectedProduct: null,
   loading: true,
   page: 0,
@@ -12,13 +13,25 @@ const initialState = {
   success: false,
 };
 
-// 비동기 액션 생성
 export const getProductList = createAsyncThunk(
   'products/getProductList',
   async (query, { rejectWithValue }) => {
     try {
       const response = await api.get('/product', { params: { ...query } });
       response.data.page = query.page;
+
+      return response.data;
+    } catch (error) {
+      rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getProductListHome = createAsyncThunk(
+  'products/getProductListHome',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.get('/product/home');
 
       return response.data;
     } catch (error) {
@@ -114,7 +127,6 @@ export const saleProduct = createAsyncThunk(
   }
 );
 
-// 슬라이스 생성
 const productSlice = createSlice({
   name: 'products',
   initialState,
@@ -147,6 +159,18 @@ const productSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
         state.success = false;
+      })
+      .addCase(getProductListHome.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(getProductListHome.fulfilled, (state, action) => {
+        state.loading = false;
+        state.productListHome = action.payload;
+        state.error = '';
+      })
+      .addCase(getProductListHome.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       })
       .addCase(getProductList.pending, (state, action) => {
         state.loading = true;

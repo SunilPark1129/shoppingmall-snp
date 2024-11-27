@@ -175,8 +175,11 @@ const ProductDetail = () => {
             <button className="product__btn" onClick={addItemToCart}>
               Add to cart
             </button>
-            <em style={{ fontWeight: 'bold' }}>
-              This website is a demo created for project purposes.
+            <em style={{ fontWeight: 'bold', color: 'red' }}>
+              This website is a demo created for project purposes. The clothing
+              featured here is from actual H&M collections. If you wish to
+              purchase any items, please visit the official H&M website. This
+              demo website does not sell clothing.
             </em>
             <div className="product__policy">
               SHIPPING POLICY: SnP offers shipping to customers who are 13 years

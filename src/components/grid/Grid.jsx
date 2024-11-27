@@ -18,6 +18,7 @@ function Grid({ productList, page, totalPageNum, name, category }) {
               totalPageNum={totalPageNum}
               name={name}
               category={category}
+              imgFront={true}
             />
           );
         })}

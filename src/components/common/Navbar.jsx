@@ -66,7 +66,7 @@ function Navbar() {
       if (event.target.value === '') {
         return navigate('/');
       }
-      navigate(`/?page=1&name=${event.target.value}`);
+      navigate(`/?name=${event.target.value}`);
     }
   };
 

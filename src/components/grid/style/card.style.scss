@@ -36,6 +36,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+  background-color: var(--clr-bg);
 
   &-name {
     color: rgb(55, 55, 55);
