@@ -62,7 +62,7 @@ export const bannerImages = [
   },
   {
     id: '3',
-    heading: { text: 'Recyclling Program in STORE', color: 'light' },
+    heading: { text: 'Recyclling Program in SNP STORE', color: 'light' },
     paragraph: {
       text: 'We accept clothes for recycling and offer a 10% discount on your purchase',
       color: 'light',

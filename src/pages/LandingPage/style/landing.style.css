@@ -1,13 +1,51 @@
 .landing__container {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
   margin: auto;
 }
 
 .home .landing__container {
-  padding: 3em 1em;
-  gap: 6em;
+  padding: 1em 0;
+  gap: 2em;
+}
+
+.landing__gender {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.landing__gender .image-container {
+  width: 100%;
+  height: 100%;
+}
+.landing__gender-card {
+  cursor: pointer;
+  position: relative;
+  aspect-ratio: 2/3;
+  flex: 1 1 50%;
+  max-width: 40rem;
+}
+.landing__gender-card--left .landing__gender-text {
+  background-color: #a71717;
+}
+.landing__gender-card--left:hover .landing__gender-text {
+  background-color: #c05b5b;
+}
+.landing__gender-card--right .landing__gender-text {
+  background-color: #1b1b1b;
+}
+.landing__gender-card--right:hover .landing__gender-text {
+  background-color: #4d4d4d;
+}
+.landing__gender-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  padding: 0.5em;
+  width: 100%;
+  text-align: center;
 }
 
 .landing__home {
@@ -18,27 +56,36 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-right: 0.5em;
+  gap: 0.5em;
 }
 .landing__home-top h2 {
-  font-size: 1.4em;
+  font-size: 1.2em;
   color: var(--clr-font);
-  background-color: #782929;
+  background-color: #515151;
   color: #fff;
   padding: 0.25em 1em;
 }
 .landing__home-top a {
   color: var(--clr-font-link);
   text-decoration: underline;
+  flex-shrink: 0;
 }
 .landing__home .grid {
   grid-template-columns: repeat(4, 1fr);
+  border: 1px solid #e2e2e2;
 }
 .landing__home .grid .card {
   margin-bottom: 0px;
 }
 
-@media screen and (max-width: 500px) {
-  .landing__container {
+@media screen and (max-width: 550px) {
+  .home .landing__container {
     padding: 1rem 0;
+    background-color: rgb(241, 241, 241);
+    gap: 1em;
+  }
+  .home .landing__container .grid {
+    gap: 1em;
   }
 }/*# sourceMappingURL=landing.style.css.map */

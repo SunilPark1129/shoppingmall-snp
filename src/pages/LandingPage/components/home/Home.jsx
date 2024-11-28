@@ -39,6 +39,37 @@ function Home({ loading, productListHome }) {
     <main className="landing home">
       <div className="wrapper">
         <Banner />
+        <article className="landing__gender">
+          <Link
+            to={'/?category=female'}
+            className="landing__gender-card landing__gender-card--left"
+          >
+            <div className="image-container">
+              <img
+                src="https://res.cloudinary.com/dtcm9xmqh/image/upload/w_800/v1730796150/02b190814a79625291cdb08f64ab94d65bde77c8_eky6fl.jpg"
+                alt="women"
+              />
+            </div>
+            <div className="landing__gender-text">
+              <div>View All Women Clothing</div>
+            </div>
+          </Link>
+
+          <Link
+            to={'/?category=male'}
+            className="landing__gender-card landing__gender-card--right"
+          >
+            <div className="image-container">
+              <img
+                src="https://res.cloudinary.com/dtcm9xmqh/image/upload/w_800/v1730817334/e3f221933f379129239811fa4ca45e9f68fa94c1_iebjzs.jpg"
+                alt="men"
+              />
+            </div>
+            <div className="landing__gender-text">
+              <div>View All Men Clothing</div>
+            </div>
+          </Link>
+        </article>
         <div className="landing__container">
           {loading ? (
             <Skeleton />
@@ -47,7 +78,7 @@ function Home({ loading, productListHome }) {
               <section className="landing__home" key={label}>
                 <div className="landing__home-top">
                   <h2>{label}</h2>
-                  <Link to={to}>show more</Link>
+                  <Link to={to}>View All</Link>
                 </div>
                 <div className="landing__home-bot">
                   <div className="grid">

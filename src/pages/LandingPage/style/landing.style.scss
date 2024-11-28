@@ -1,14 +1,57 @@
 .landing__container {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
   margin: auto;
 }
 
 .home {
   .landing__container {
-    padding: 3em 1em;
-    gap: 6em;
+    padding: 1em 0;
+    gap: 2em;
+  }
+}
+
+.landing__gender {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .image-container {
+    width: 100%;
+    height: 100%;
+  }
+  &-card {
+    cursor: pointer;
+    position: relative;
+    aspect-ratio: 2/3;
+    flex: 1 1 50%;
+    max-width: 40rem;
+    &--left {
+      .landing__gender-text {
+        background-color: #a71717;
+      }
+      &:hover .landing__gender-text {
+        background-color: #c05b5b;
+      }
+    }
+    &--right {
+      .landing__gender-text {
+        background-color: #1b1b1b;
+      }
+      &:hover .landing__gender-text {
+        background-color: #4d4d4d;
+      }
+    }
+  }
+  &-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    padding: 0.5em;
+    width: 100%;
+    text-align: center;
   }
 }
 
@@ -19,17 +62,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-right: 0.5em;
+    gap: 0.5em;
 
     h2 {
-      font-size: 1.4em;
+      font-size: 1.2em;
       color: var(--clr-font);
-      background-color: #782929;
+      background-color: #515151;
       color: #fff;
       padding: 0.25em 1em;
     }
     a {
       color: var(--clr-font-link);
       text-decoration: underline;
+      flex-shrink: 0;
     }
   }
   &-bot {
@@ -39,14 +85,22 @@
 
   .grid {
     grid-template-columns: repeat(4, 1fr);
+    border: 1px solid #e2e2e2;
     .card {
       margin-bottom: 0px;
     }
   }
 }
 
-@media screen and (max-width: 500px) {
-  .landing__container {
+@media screen and (max-width: 550px) {
+  .home .landing__container {
     padding: 1rem 0;
+    background-color: rgb(241, 241, 241);
+    gap: 1em;
+
+    .grid {
+      gap: 1em;
+      // display: none !important;
+    }
   }
 }

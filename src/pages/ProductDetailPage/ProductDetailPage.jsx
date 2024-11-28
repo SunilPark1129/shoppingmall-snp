@@ -39,6 +39,7 @@ const ProductDetail = () => {
     // 카트에 아이템 추가하기
     dispatch(addToCart({ id, size }));
   };
+
   const selectSize = (value) => {
     if (value) setSizeError(false);
     // 사이즈 추가하기
