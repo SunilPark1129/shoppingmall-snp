@@ -78,10 +78,6 @@
       flex-shrink: 0;
     }
   }
-  &-bot {
-    // padding: 1em;
-    // background-color: rgb(204, 204, 204);
-  }
 
   .grid {
     grid-template-columns: repeat(4, 1fr);
@@ -94,13 +90,15 @@
 
 @media screen and (max-width: 550px) {
   .home .landing__container {
-    padding: 1rem 0;
-    background-color: rgb(241, 241, 241);
+    background-color: #f1f1f1;
     gap: 1em;
 
     .grid {
       gap: 1em;
-      // display: none !important;
     }
+  }
+
+  .landing__gender {
+    flex-direction: column;
   }
 }

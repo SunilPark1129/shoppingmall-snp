@@ -81,11 +81,13 @@
 
 @media screen and (max-width: 550px) {
   .home .landing__container {
-    padding: 1rem 0;
-    background-color: rgb(241, 241, 241);
+    background-color: #f1f1f1;
     gap: 1em;
   }
   .home .landing__container .grid {
     gap: 1em;
+  }
+  .landing__gender {
+    flex-direction: column;
   }
 }/*# sourceMappingURL=landing.style.css.map */
