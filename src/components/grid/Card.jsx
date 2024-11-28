@@ -8,7 +8,7 @@ import { getProductList } from '../../features/product/productSlice';
 import { useDispatch } from 'react-redux';
 
 const smWidth = '400';
-const lgWidth = '600';
+const lgWidth = '800';
 
 function Card({ item, isLast, page, totalPageNum, name, category, imgFront }) {
   const lastIdxRef = useRef(null);
@@ -69,20 +69,11 @@ function Card({ item, isLast, page, totalPageNum, name, category, imgFront }) {
     >
       <div className="image-container">
         {item?.image.length === 1 ? (
-          <>{imgFront ? <img {...firstImg} /> : <img {...secondImg} />}</>
+          <img {...secondImg} />
         ) : (
           <>
-            {imgFront ? (
-              <>
-                <img {...firstImg} />
-                <img {...secondImg} />
-              </>
-            ) : (
-              <>
-                <img {...secondImg} />
-                <img {...firstImg} />
-              </>
-            )}
+            <img {...secondImg} />
+            <img {...firstImg} />
           </>
         )}
       </div>

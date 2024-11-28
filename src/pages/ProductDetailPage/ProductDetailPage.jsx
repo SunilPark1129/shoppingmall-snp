@@ -7,6 +7,7 @@ import { getProductDetail } from '../../features/product/productSlice';
 import { resizeImage } from '../../utils/resizeImage';
 import { currencyFormat } from '../../utils/number';
 import Loading from '../../components/common/Loading';
+import ProductZoomIn from './ProductZoomIn';
 
 const sizes = ['xs', 's', 'm', 'l', 'xl'];
 
@@ -82,11 +83,7 @@ const ProductDetail = () => {
       <div className="wrapper">
         <div className="product__content">
           <div className="product__img">
-            <img
-              src={resizeImage(selectedProduct.image[selectedImg].url, 600)}
-              className="w-100"
-              alt="image"
-            />
+            <ProductZoomIn item={selectedProduct.image[selectedImg].url} />
             {selectedProduct.image.length > 1 && (
               <div className="product__img-list">
                 <>
