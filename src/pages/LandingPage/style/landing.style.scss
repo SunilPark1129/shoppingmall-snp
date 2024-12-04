@@ -7,7 +7,7 @@
 .home {
   .landing__container {
     padding: 1em 0;
-    gap: 2em;
+    gap: 10em;
   }
 }
 
@@ -25,39 +25,36 @@
     position: relative;
     aspect-ratio: 2/3;
     flex: 1 1 50%;
-    max-width: 40rem;
-    &--left {
-      .landing__gender-text {
-        background-color: #a71717;
-      }
-      &:hover .landing__gender-text {
-        background-color: #c05b5b;
-      }
-    }
-    &--right {
-      .landing__gender-text {
-        background-color: #1b1b1b;
-      }
-      &:hover .landing__gender-text {
-        background-color: #4d4d4d;
-      }
-    }
   }
   &-text {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     color: #fff;
     padding: 0.5em;
     width: 100%;
+    height: 100%;
+    font-size: 5em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.156);
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.381);
+
+    &:hover {
+      background-color: transparent;
+      color: transparent;
+      text-shadow: none;
+    }
   }
 }
 
 .landing__home {
   display: flex;
   flex-direction: column;
+
   &-top {
     display: flex;
     justify-content: space-between;
@@ -66,32 +63,38 @@
     gap: 0.5em;
 
     h2 {
-      font-size: 1.2em;
-      color: var(--clr-font);
-      background-color: #515151;
-      color: #fff;
-      padding: 0.25em 1em;
+      font-size: 1.6em;
+      font-weight: bold;
+      padding: 2em 4px;
     }
     a {
-      color: var(--clr-font-link);
-      text-decoration: underline;
+      color: var(--clr-font-md);
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
     }
   }
 
   .grid {
     grid-template-columns: repeat(4, 1fr);
-    border: 1px solid #e2e2e2;
     .card {
       margin-bottom: 0px;
     }
   }
 }
 
+@media (max-width: 1000px) {
+  .landing__gender {
+    &-text {
+      font-size: 3em;
+    }
+  }
+}
+
 @media screen and (max-width: 550px) {
   .home .landing__container {
-    background-color: #f1f1f1;
-    gap: 1em;
+    gap: 2em;
 
     .grid {
       gap: 1em;
@@ -100,5 +103,15 @@
 
   .landing__gender {
     flex-direction: column;
+  }
+
+  .landing__home {
+    &-top {
+      h2 {
+        font-size: 1.4em;
+        font-weight: bold;
+        padding: 1em 4px;
+      }
+    }
   }
 }

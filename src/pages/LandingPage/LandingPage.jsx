@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import './style/landing.style.css';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Banner from './components/banner/Banner';
 import {
   getProductList,
   getProductListHome,

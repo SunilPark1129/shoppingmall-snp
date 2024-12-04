@@ -4,31 +4,32 @@ import { Link } from 'react-router-dom';
 import Card from '../../../../components/grid/Card';
 import Banner from '../banner/Banner';
 import ItemEmpty from '../itemEmpty/ItemEmpty';
+import ArrowRightIcon from '../../../../assets/icons/ArrowRightIcon';
 
 function Home({ loading, productListHome }) {
   const items = [
     {
-      label: 'New Women Top',
+      label: 'Women Top Today',
       to: '/?category=female&category=top',
       data: productListHome?.female_top,
     },
     {
-      label: 'New Women Pants',
+      label: 'Women Pants Today',
       to: '/?category=female&category=pants',
       data: productListHome?.female_pants,
     },
     {
-      label: 'New Women Dress',
+      label: 'Women Dress Today',
       to: '/?category=female&category=dress',
       data: productListHome?.female_dress,
     },
     {
-      label: 'New Men Top',
+      label: 'Men Top Today',
       to: '/?category=male&category=top',
       data: productListHome?.male_top,
     },
     {
-      label: 'New Men Pants',
+      label: 'Men Pants Today',
       to: '/?category=male&category=pants',
       data: productListHome?.male_pants,
     },
@@ -40,10 +41,7 @@ function Home({ loading, productListHome }) {
       <div className="wrapper">
         <Banner />
         <article className="landing__gender">
-          <Link
-            to={'/?category=female'}
-            className="landing__gender-card landing__gender-card--left"
-          >
+          <Link to={'/?category=female'} className="landing__gender-card">
             <div className="image-container">
               <img
                 src="https://res.cloudinary.com/dtcm9xmqh/image/upload/w_800/v1730796150/02b190814a79625291cdb08f64ab94d65bde77c8_eky6fl.jpg"
@@ -51,14 +49,17 @@ function Home({ loading, productListHome }) {
               />
             </div>
             <div className="landing__gender-text">
-              <div>View All Women Clothing</div>
+              <div>
+                VIEW
+                <br />
+                WOMEN
+                <br />
+                CLOTHING
+              </div>
             </div>
           </Link>
 
-          <Link
-            to={'/?category=male'}
-            className="landing__gender-card landing__gender-card--right"
-          >
+          <Link to={'/?category=male'} className="landing__gender-card">
             <div className="image-container">
               <img
                 src="https://res.cloudinary.com/dtcm9xmqh/image/upload/w_800/v1730817334/e3f221933f379129239811fa4ca45e9f68fa94c1_iebjzs.jpg"
@@ -66,7 +67,13 @@ function Home({ loading, productListHome }) {
               />
             </div>
             <div className="landing__gender-text">
-              <div>View All Men Clothing</div>
+              <div>
+                VIEW
+                <br />
+                MEN
+                <br />
+                CLOTHING
+              </div>
             </div>
           </Link>
         </article>
@@ -78,7 +85,9 @@ function Home({ loading, productListHome }) {
               <section className="landing__home" key={label}>
                 <div className="landing__home-top">
                   <h2>{label}</h2>
-                  <Link to={to}>View All</Link>
+                  <Link to={to}>
+                    More <ArrowRightIcon />
+                  </Link>
                 </div>
                 <div className="landing__home-bot">
                   <div className="grid">
