@@ -1,23 +1,19 @@
 export const menuList = [
   { label: 'Women', to: '/?category=female' },
   { label: 'Men', to: '/?category=male' },
-  { label: 'Top', to: '/?category=top' },
-  { label: 'Pants', to: '/?category=pants' },
-  { label: 'Dress', to: '/?category=dress' },
-  { label: 'HOME', to: '/' },
-  { label: 'Sale', to: '/?category=sale' },
 ];
 export const womenList = [
-  { label: 'Women Top', to: '/?category=female&category=top' },
-  { label: 'Women Pants', to: '/?category=female&category=pants' },
-  { label: 'Women Dress', to: '/?category=female&category=dress' },
-  { label: 'Women Sale', to: '/?category=female&category=sale' },
+  { label: 'Top', to: '/?category=female&category=top' },
+  { label: 'Pants', to: '/?category=female&category=pants' },
+  { label: 'Dress', to: '/?category=female&category=dress' },
+  { label: 'Sale', to: '/?category=female&category=sale' },
 ];
 export const menList = [
-  { label: 'Men Top', to: '/?category=male&category=top' },
-  { label: 'Men Pants', to: '/?category=male&category=pants' },
-  { label: 'Men Sale', to: '/?category=male&category=sale' },
+  { label: 'Top', to: '/?category=male&category=top' },
+  { label: 'Pants', to: '/?category=male&category=pants' },
+  { label: 'Sale', to: '/?category=male&category=sale' },
 ];
+
 export const topList = [
   { label: 'Women Top', to: '/?category=female&category=top' },
   { label: 'Men Top', to: '/?category=male&category=top' },

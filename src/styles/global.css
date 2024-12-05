@@ -105,6 +105,39 @@ textarea {
   color: rgb(224, 67, 67);
 }
 
+/* ----------------- modal styling ---------------- */
+.modal-bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.483);
+  z-index: 997;
+  cursor: pointer;
+}
+
+.modal-close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  cursor: pointer;
+  z-index: 9;
+}
+
+.mobile-appear {
+  display: none !important;
+}
+
+@media (max-width: 700px) {
+  .mobile-disappear {
+    display: none !important;
+  }
+  .mobile-appear {
+    display: flex !important;
+  }
+}
+
 /* media body font-size */
 @media (max-width: 800px) {
   body {
