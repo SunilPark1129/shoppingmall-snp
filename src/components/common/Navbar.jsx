@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import {
@@ -29,6 +29,7 @@ import ExitIcon from '../../assets/icons/ExitIcon';
 import { logout } from '../../features/user/userSlice';
 
 function Navbar({ user }) {
+  const serachRef = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -40,6 +41,7 @@ function Navbar({ user }) {
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
+    serachRef.current.value = '';
     if (category.length !== 0) {
       // word exchange
       const exchange = category.map((item) => {
@@ -61,11 +63,13 @@ function Navbar({ user }) {
 
   const onCheckEnter = (event) => {
     if (event.key === 'Enter') {
-      if (event.target.value === '') {
-        return navigate('/');
-      }
-      navigate(`/?name=${event.target.value}`);
+      handleSearch(event.target.value);
     }
+  };
+
+  const handleSearch = (val) => {
+    if (val.trim() === '') return;
+    navigate(`/?name=${val}`);
   };
 
   const handleLogout = () => {
@@ -102,8 +106,14 @@ function Navbar({ user }) {
             </div>
             <div className="navbar__top-box navbar__top-box--right">
               <label className="searchbar mobile-disappear">
-                <div className="searchbar__svg svg-box">{SvgSearch}</div>
+                <div
+                  className="searchbar__svg svg-box"
+                  onClick={() => handleSearch(serachRef.current.value)}
+                >
+                  {SvgSearch}
+                </div>
                 <input
+                  ref={serachRef}
                   type="text"
                   autoComplete="off"
                   placeholder="Search Product"

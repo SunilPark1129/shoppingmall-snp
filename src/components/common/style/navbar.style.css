@@ -172,6 +172,7 @@
   cursor: pointer;
 }
 .searchbar input {
+  font-size: 1em;
   border: none;
   border-bottom: 1px solid rgb(129, 129, 129);
   outline: none;
@@ -179,6 +180,12 @@
 }
 .searchbar input:focus {
   border-bottom: 1px solid rgb(29, 29, 29);
+}
+.searchbar::-moz-placeholder {
+  color: var(--clr-font-md);
+}
+.searchbar::placeholder {
+  color: var(--clr-font-md);
 }
 
 @media (max-width: 1300px) {
