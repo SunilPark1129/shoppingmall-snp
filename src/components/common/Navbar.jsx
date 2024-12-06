@@ -26,19 +26,15 @@ import {
 } from '../../utils/navbarLinks';
 import HamburgerIcon from '../../assets/icons/HamburgerIcon';
 import ExitIcon from '../../assets/icons/ExitIcon';
+import { logout } from '../../features/user/userSlice';
 
-function Navbar() {
-  // temporary
-  const user = false;
-
+function Navbar({ user }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const [query] = useSearchParams();
   const category = query.getAll('category');
   const [isModalOn, setIsModalOn] = useState(false);
-
-  let gender = null;
 
   const [curCategory, setCurCategory] = useState('');
   const [links, setLinks] = useState([]);
@@ -73,8 +69,7 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    // ******** work on it later ********
-    // dispatch(logout());
+    dispatch(logout());
   };
 
   function handleModalOpen() {
@@ -117,7 +112,7 @@ function Navbar() {
               </label>
               <div className="navbar__top-feature">
                 {user ? (
-                  <div onClick={() => console.log('logout')}>
+                  <div onClick={handleLogout}>
                     <div className="svg-box">{SvgUser}</div>
                     <span className="mobile-disappear"> Logout</span>
                   </div>
