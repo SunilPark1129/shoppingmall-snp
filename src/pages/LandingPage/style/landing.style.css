@@ -1,18 +1,26 @@
-.landing__container {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-}
-
 .home .landing__container {
   padding: 1em 0;
   gap: 10em;
 }
 
+.landing__header {
+  padding: 2em 0;
+}
+.landing__header h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--clr-font);
+}
+.landing__container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
 .landing__gender {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin: 10em 0;
 }
 .landing__gender .image-container {
   width: 100%;
@@ -46,7 +54,6 @@
   color: transparent;
   text-shadow: none;
 }
-
 .landing__home {
   display: flex;
   flex-direction: column;
@@ -91,6 +98,7 @@
   }
   .landing__gender {
     flex-direction: column;
+    margin: 2em 0;
   }
   .landing__home-top h2 {
     font-size: 1.4em;

@@ -41,10 +41,37 @@ function LandingPage() {
     return <Home loading={loading} productListHome={productListHome} />;
   }
 
+  // setup title
+  let title;
+  function getTitle() {
+    if (name) {
+      return `LOOKING FOR "${name.toUpperCase()}"`;
+    }
+
+    if (!title) {
+      let gender = "WOMEN'S";
+      if (category[0] === 'male') {
+        gender = "MEN'S";
+      }
+
+      if (category.length === 1) {
+        title = `${gender} CLOTHES`;
+      } else {
+        title = `${gender} ${category[1].toUpperCase()}`;
+      }
+    }
+
+    return title;
+  }
+  title = getTitle();
+
   return (
     <main className="landing">
       <div className="wrapper">
         {!loading && productList.length === 0 && <ItemEmpty />}
+        <header className="landing__header">
+          <h1>{title}</h1>
+        </header>
         <div className="landing__container">
           <Grid
             productList={productList}
