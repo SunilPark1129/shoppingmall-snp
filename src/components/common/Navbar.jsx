@@ -100,7 +100,7 @@ function Navbar({ user }) {
                   <img src="/image/sparklogo.png" alt="" />
                 </div>
               </Link>
-              <div onClick={handleModalOpen}>
+              <div className="navbar__menu" onClick={handleModalOpen}>
                 <HamburgerIcon />
               </div>
             </div>
@@ -121,6 +121,14 @@ function Navbar({ user }) {
                 />
               </label>
               <div className="navbar__top-feature">
+                <div onClick={() => navigate('/cart')}>
+                  <div className="svg-box">{SvgBag}</div>
+                  <span className="mobile-disappear"> Cart (0)</span>
+                </div>
+                <div onClick={() => navigate('/order')}>
+                  <div className="svg-box">{SvgTable}</div>
+                  <span className="mobile-disappear"> My Order</span>
+                </div>
                 {user ? (
                   <div
                     onClick={handleLogout}
@@ -138,14 +146,6 @@ function Navbar({ user }) {
                     <span> Login</span>
                   </div>
                 )}
-                <div onClick={() => navigate('/cart')}>
-                  <div className="svg-box">{SvgBag}</div>
-                  <span className="mobile-disappear"> Cart (0)</span>
-                </div>
-                <div onClick={() => navigate('/order')}>
-                  <div className="svg-box">{SvgTable}</div>
-                  <span className="mobile-disappear"> My Order</span>
-                </div>
               </div>
             </div>
           </div>
