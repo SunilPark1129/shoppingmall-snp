@@ -98,6 +98,10 @@
   height: 100vh;
   padding-bottom: 5rem;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1em;
 }
 .navbar__link-container ul {
   display: flex;
@@ -138,6 +142,25 @@
 .navbar__logo .image-container img {
   -o-object-fit: contain;
      object-fit: contain;
+}
+.navbar__login {
+  margin-top: auto;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+.navbar__login--logout {
+  color: #fff !important;
+  background-color: #303030;
+}
+.navbar__login--logout svg {
+  fill: #fff;
+}
+.navbar__name {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  color: var(--clr-font-md);
+  text-align: right;
 }
 
 .searchbar {

@@ -112,6 +112,10 @@
       height: 100vh;
       padding-bottom: 5rem;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1em;
 
       ul {
         display: flex;
@@ -160,6 +164,29 @@
         object-fit: contain;
       }
     }
+  }
+
+  &__login {
+    margin-top: auto;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+
+    &--logout {
+      color: #fff !important;
+      background-color: #303030;
+
+      svg {
+        fill: #fff;
+      }
+    }
+  }
+
+  &__name {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    color: var(--clr-font-md);
+    text-align: right;
   }
 }
 

@@ -112,12 +112,18 @@ function Navbar({ user }) {
               </label>
               <div className="navbar__top-feature">
                 {user ? (
-                  <div onClick={handleLogout}>
+                  <div
+                    onClick={handleLogout}
+                    className="navbar__login navbar__login--logout"
+                  >
                     <div className="svg-box">{SvgUser}</div>
                     <span> Logout</span>
                   </div>
                 ) : (
-                  <div onClick={() => navigate('/login')}>
+                  <div
+                    onClick={() => navigate('/login')}
+                    className="navbar__login"
+                  >
                     <div className="svg-box">{SvgUser}</div>
                     <span> Login</span>
                   </div>
@@ -208,6 +214,15 @@ function Navbar({ user }) {
                   </Link>
                 </li>
               </ul>
+              {user && (
+                <div className="navbar__name">
+                  <div className="line"></div>
+                  <div>
+                    <div>Hi, {user.name}</div>
+                    <div>{user.email}</div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           {isModalOn && (
