@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import './style/landing.style.css';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,23 +17,19 @@ function LandingPage() {
   const [query] = useSearchParams();
   const name = query.get('name');
   const category = query.getAll('category');
-  const mounted = useRef(null);
 
   const { loading, productList, productListHome, page, totalPageNum } =
     useSelector((state) => state.product);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (mounted.current) {
-      if (!name && category.length === 0) {
-        if (productListHome.length === 0) {
-          dispatch(getProductListHome());
-        }
-      } else {
-        dispatch(getProductList({ page: 1, name, category }));
+
+    if (!name && category.length === 0) {
+      if (productListHome.length === 0) {
+        dispatch(getProductListHome());
       }
     } else {
-      mounted.current = true;
+      dispatch(getProductList({ page: 1, name, category }));
     }
 
     return () => {

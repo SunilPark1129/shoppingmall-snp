@@ -175,25 +175,26 @@ function Navbar() {
                       </Link>
                       {active && (
                         <ul>
-                          {links.map(({ label, to }) => {
-                            let isTarget = false;
+                          {links &&
+                            links.map(({ label, to }) => {
+                              let isTarget = false;
 
-                            if (curCategory.length === 2) {
-                              isTarget =
-                                curCategory[1].toLowerCase() ===
-                                label.toLowerCase();
-                            }
-                            return (
-                              <li key={label}>
-                                <Link
-                                  to={to}
-                                  className={`${isTarget && 'isTarget'}`}
-                                >
-                                  {label.toUpperCase()}
-                                </Link>
-                              </li>
-                            );
-                          })}
+                              if (curCategory.length === 2) {
+                                isTarget =
+                                  curCategory[1].toLowerCase() ===
+                                  label.toLowerCase();
+                              }
+                              return (
+                                <li key={label}>
+                                  <Link
+                                    to={to}
+                                    className={`${isTarget && 'isTarget'}`}
+                                  >
+                                    {label.toUpperCase()}
+                                  </Link>
+                                </li>
+                              );
+                            })}
                         </ul>
                       )}
                     </li>
