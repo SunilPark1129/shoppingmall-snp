@@ -114,12 +114,12 @@ function Navbar({ user }) {
                 {user ? (
                   <div onClick={handleLogout}>
                     <div className="svg-box">{SvgUser}</div>
-                    <span className="mobile-disappear"> Logout</span>
+                    <span> Logout</span>
                   </div>
                 ) : (
                   <div onClick={() => navigate('/login')}>
                     <div className="svg-box">{SvgUser}</div>
-                    <span className="mobile-disappear"> Login</span>
+                    <span> Login</span>
                   </div>
                 )}
                 <div onClick={() => navigate('/cart')}>
