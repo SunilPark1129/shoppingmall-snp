@@ -1,8 +1,8 @@
 .banner {
   display: flex;
   width: 100%;
-  max-width: var(--max-width);
-  min-height: 30rem;
+  max-width: 1800px;
+  min-height: 40rem;
   position: relative;
   margin: auto;
 }
@@ -10,6 +10,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
+  max-width: none;
   display: flex;
   left: 0;
   top: 0;
@@ -53,14 +54,6 @@
   background: linear-gradient(to right, #101010 10%, transparent 40%);
 }
 
-@media (max-width: 1450px) {
-  .banner__image {
-    width: 100%;
-  }
-  .banner__image .image-bg {
-    background: transparent;
-  }
-}
 .banner__content {
   position: absolute;
   top: 50%;
@@ -107,10 +100,10 @@
   position: absolute;
   display: flex;
   bottom: 0;
-  right: 8%;
+  right: 3%;
   gap: 1rem;
   align-items: center;
-  left: 8%;
+  left: 3%;
   height: 15%;
 }
 .banner__text-color {
@@ -122,39 +115,6 @@
   text-decoration: underline;
 }
 
-@media (max-width: 1450px) {
-  .banner__text {
-    position: relative;
-    justify-content: center;
-    align-items: center;
-  }
-  .banner__text h2 {
-    transform: none;
-    font-size: 2em;
-  }
-  .banner__text h2,
-  .banner__text p {
-    text-align: center;
-    position: static;
-    width: 100%;
-  }
-  .banner__text p {
-    color: #fff;
-    max-width: 28rem;
-    font-size: 1em;
-  }
-  .banner__text-desc {
-    height: auto;
-    position: static;
-    background-color: rgba(0, 0, 0, 0.6235294118);
-    padding: 0.5rem 1rem;
-    flex-direction: column;
-    gap: 0;
-  }
-  .banner__text svg {
-    display: inline;
-  }
-}
 .banner__transport {
   display: flex;
   height: 15%;
@@ -162,8 +122,8 @@
   margin: 0 auto;
   justify-content: end;
   position: absolute;
-  right: 5%;
-  bottom: 0%;
+  right: 3%;
+  bottom: 6rem;
   gap: 2em;
   z-index: 9;
 }
@@ -250,8 +210,46 @@
     left: 0%;
   }
 }
-@media (max-width: 620px) {
+@media (max-width: 750px) {
+  .banner__image {
+    width: 100%;
+  }
+  .banner__image .image-bg {
+    background: transparent;
+  }
+  .banner__text {
+    position: relative;
+    justify-content: center;
+  }
+  .banner__text h2 {
+    transform: none;
+    font-size: 2em;
+  }
+  .banner__text h2,
+  .banner__text p {
+    position: static;
+    width: 100%;
+  }
+  .banner__text p {
+    color: #fff;
+    font-size: 1em;
+  }
+  .banner__text-desc {
+    height: auto;
+    position: static;
+    background-color: rgba(0, 0, 0, 0.6235294118);
+    padding: 0.5rem 1rem;
+    flex-wrap: wrap;
+  }
+  .banner__text-desc p {
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .banner__text svg {
+    display: inline;
+  }
   .banner__transport {
+    bottom: 0;
     padding: 0 0.5rem;
     right: 0;
     left: 0;

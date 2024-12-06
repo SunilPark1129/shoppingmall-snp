@@ -38,8 +38,38 @@ function Home({ loading, productListHome }) {
   if (!loading && !productListHome) return <ItemEmpty />;
   return (
     <main className="landing home">
+      <Banner />
       <div className="wrapper">
-        <Banner />
+        <div className="landing__container">
+          {loading ? (
+            <Skeleton />
+          ) : (
+            items.map(({ label, to, data }) => (
+              <section className="landing__home" key={label}>
+                <div className="landing__home-top">
+                  <h2>{label}</h2>
+                  <Link to={to}>
+                    More <ArrowRightIcon />
+                  </Link>
+                </div>
+                <div className="landing__home-bot">
+                  <div className="grid">
+                    {data &&
+                      data.map((item) => (
+                        <Card
+                          item={item}
+                          key={item._id}
+                          name={null}
+                          category={null}
+                          imgFront={false}
+                        />
+                      ))}
+                  </div>
+                </div>
+              </section>
+            ))
+          )}
+        </div>
         <article className="landing__gender">
           <Link to={'/?category=female'} className="landing__gender-card">
             <div className="image-container">
@@ -77,36 +107,6 @@ function Home({ loading, productListHome }) {
             </div>
           </Link>
         </article>
-        <div className="landing__container">
-          {loading ? (
-            <Skeleton />
-          ) : (
-            items.map(({ label, to, data }) => (
-              <section className="landing__home" key={label}>
-                <div className="landing__home-top">
-                  <h2>{label}</h2>
-                  <Link to={to}>
-                    More <ArrowRightIcon />
-                  </Link>
-                </div>
-                <div className="landing__home-bot">
-                  <div className="grid">
-                    {data &&
-                      data.map((item) => (
-                        <Card
-                          item={item}
-                          key={item._id}
-                          name={null}
-                          category={null}
-                          imgFront={false}
-                        />
-                      ))}
-                  </div>
-                </div>
-              </section>
-            ))
-          )}
-        </div>
       </div>
     </main>
   );
