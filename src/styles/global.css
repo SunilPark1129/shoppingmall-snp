@@ -129,6 +129,10 @@ textarea {
   display: none !important;
 }
 
+.error-message {
+  color: red !important;
+}
+
 @media (max-width: 700px) {
   .mobile-disappear {
     display: none !important;

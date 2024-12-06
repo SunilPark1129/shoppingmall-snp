@@ -1,1 +1,104 @@
-/*# sourceMappingURL=index.css.map */
+.login {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 60rem;
+}
+.login .wrapper {
+  max-width: 30rem;
+  width: 100%;
+}
+.login__content {
+  padding: 2em 1em;
+  color: var(--clr-font);
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.login h1 {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+.login__top {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.login__top label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  font-weight: bold;
+}
+.login__top input {
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid rgb(195, 195, 195);
+  outline: none;
+  font-size: 1em;
+  padding: 0.5rem 0;
+}
+.login__top input::-moz-placeholder {
+  color: rgb(197, 197, 197);
+}
+.login__top input::placeholder {
+  color: rgb(197, 197, 197);
+}
+.login__top input:focus {
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+.login__bot {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.login__bot button {
+  width: 100%;
+  padding: 1em;
+  background-color: var(--clr-primary);
+  color: #fff;
+}
+.login__bot div {
+  color: var(--clr-font-md);
+}
+.login__bot div a {
+  color: var(--clr-font-link);
+}
+.login__other {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+}
+.login__label {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+.login__label > div {
+  position: relative;
+  z-index: 2;
+  padding: 0 1em;
+  background-color: var(--clr-bg);
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  color: var(--clr-font-md);
+}
+.login__label > span {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 1px;
+  background-color: rgb(212, 212, 212);
+}/*# sourceMappingURL=index.css.map */

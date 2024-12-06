@@ -5,6 +5,7 @@ import './styles/variables.css';
 import reportWebVitals from './reportWebVitals';
 import store from './features/store';
 import { Provider } from 'react-redux';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LandingPage from './pages/LandingPage/LandingPage';
@@ -18,6 +19,8 @@ import AdminPage from './pages/AdminPage/AdminPage';
 import PaymentPage from './pages/PaymentPage/PaymentPage';
 import ProductDetail from './pages/ProductDetailPage/ProductDetailPage';
 import Loading from './components/common/Loading';
+
+const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 const router = createBrowserRouter([
   {
@@ -58,13 +61,13 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
     <Provider store={store}>
       <Suspense fallback={<Loading />}>
         <RouterProvider router={router} />
       </Suspense>
     </Provider>
-  </React.StrictMode>
+  </GoogleOAuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
