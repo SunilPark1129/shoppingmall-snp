@@ -49,6 +49,9 @@
   color: var(--clr-drk);
   cursor: pointer;
 }
+.navbar__top-feature span {
+  color: var(--clr-font-md);
+}
 .navbar__top-box {
   display: flex;
   align-items: center;
@@ -153,8 +156,10 @@
 }
 .navbar__login--logout {
   padding: 0.25rem 0.75rem;
-  color: #fff !important;
   background-color: #303030;
+}
+.navbar__login--logout span {
+  color: #fff !important;
 }
 .navbar__login--logout svg {
   fill: #fff;

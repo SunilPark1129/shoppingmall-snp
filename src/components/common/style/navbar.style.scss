@@ -52,6 +52,10 @@
         color: var(--clr-drk);
         cursor: pointer;
       }
+
+      span {
+        color: var(--clr-font-md);
+      }
     }
 
     &-box {
@@ -177,8 +181,11 @@
 
     &--logout {
       padding: 0.25rem 0.75rem;
-      color: #fff !important;
       background-color: #303030;
+
+      span {
+        color: #fff !important;
+      }
 
       svg {
         fill: #fff;
