@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './index.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCartList } from '../../features/cart/cartSlice';
+import CartCard from './components/CartCard';
+import OrderReceipt from './components/OrderReceipt';
 
 function CartPage() {
-  const items = true;
+  const dispatch = useDispatch();
+  const { cartList, totalPrice } = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    //카트리스트 불러오기
+    dispatch(getCartList());
+  }, []);
+
+  useEffect(() => {
+    console.log(cartList);
+  }, [cartList]);
+
   return (
     <main className="cart">
       <div className="wrapper">
@@ -10,65 +25,18 @@ function CartPage() {
         <div className="cart__content">
           {/* item */}
           <article className="cart__items">
-            {items ? (
+            {cartList.length === 0 ? (
               <div className="cart__empty">
                 <div>Your cart is empty</div>
                 <span>Please add Items</span>
               </div>
             ) : (
-              <section className="cart__card">
-                <div className="image-container">
-                  <img src="" alt="" />
-                </div>
-                <div className="cart__card-text">
-                  <div className="cart__card-top">
-                    <h2>name</h2>
-                    <div>$ 0</div>
-                    <div>Size: m</div>
-                  </div>
-                  <div className="cart__card-bot">
-                    <div>Total: $ 0</div>
-                    <div>
-                      <div className="cart__card-qt">Quantity: </div>
-                      <input type="text" />
-                    </div>
-                  </div>
-                </div>
-                <div className="cart__card-btn">
-                  <button>detail</button>
-                  <button>trash</button>
-                </div>
-              </section>
+              cartList.map((item) => <CartCard item={item} key={item._id} />)
             )}
           </article>
 
           {/* info */}
-          <article className="cart__info">
-            <h2>Order History</h2>
-            <div className="cart__price">
-              <div className="cart__price-items">
-                <section className="cart__price-card">
-                  <h3>name</h3>
-                  <div>$ 0</div>
-                </section>
-              </div>
-
-              <div className="line"></div>
-
-              <div className="cart__price-total">
-                <div>TOTAL</div>
-                <div>$ 0</div>
-              </div>
-            </div>
-            <button className="cart__price-btn">Continue to payment</button>
-            <p>
-              Payment methods available: The prices and shipping fees will not
-              be confirmed until you reach the payment stage. You can return
-              items within 30 days, and please read about the return fee and
-              additional shipping charges for items not received regarding
-              returns and refunds.
-            </p>
-          </article>
+          <OrderReceipt cartList={cartList} totalPrice={totalPrice} />
         </div>
       </div>
     </main>

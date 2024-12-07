@@ -27,6 +27,7 @@ import {
 import HamburgerIcon from '../../assets/icons/HamburgerIcon';
 import ExitIcon from '../../assets/icons/ExitIcon';
 import { logout } from '../../features/user/userSlice';
+import { getCartQty } from '../../features/cart/cartSlice';
 
 function Navbar({ user }) {
   const serachRef = useRef(null);
@@ -37,6 +38,7 @@ function Navbar({ user }) {
   const category = query.getAll('category');
   const [isModalOn, setIsModalOn] = useState(false);
 
+  const { cartItemCount } = useSelector((state) => state.cart);
   const [curCategory, setCurCategory] = useState('');
   const [links, setLinks] = useState([]);
 
@@ -72,6 +74,10 @@ function Navbar({ user }) {
     navigate(`/?name=${val}`);
   };
 
+  const handleLogin = () => {
+    navigate('/login', { state: { from: location } });
+  };
+
   const handleLogout = () => {
     dispatch(logout());
   };
@@ -79,6 +85,12 @@ function Navbar({ user }) {
   function handleModalOpen() {
     setIsModalOn((prev) => !prev);
   }
+
+  useEffect(() => {
+    if (user) {
+      dispatch(getCartQty());
+    }
+  }, [user]);
 
   return (
     <>
@@ -123,7 +135,8 @@ function Navbar({ user }) {
               <div className="navbar__top-feature">
                 <div onClick={() => navigate('/cart')}>
                   <div className="svg-box">{SvgBag}</div>
-                  <span className="mobile-disappear"> Cart (0)</span>
+                  <span className="mobile-disappear">Cart</span>(
+                  {cartItemCount || 0})
                 </div>
                 <div onClick={() => navigate('/order')}>
                   <div className="svg-box">{SvgTable}</div>
@@ -138,10 +151,7 @@ function Navbar({ user }) {
                     <span> Logout</span>
                   </div>
                 ) : (
-                  <div
-                    onClick={() => navigate('/login')}
-                    className="navbar__login"
-                  >
+                  <div onClick={handleLogin} className="navbar__login">
                     <div className="svg-box">{SvgUser}</div>
                     <span> Login</span>
                   </div>
