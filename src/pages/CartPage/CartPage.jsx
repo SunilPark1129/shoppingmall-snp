@@ -10,13 +10,8 @@ function CartPage() {
   const { cartList, totalPrice } = useSelector((state) => state.cart);
 
   useEffect(() => {
-    //카트리스트 불러오기
     dispatch(getCartList());
   }, []);
-
-  useEffect(() => {
-    console.log(cartList);
-  }, [cartList]);
 
   return (
     <main className="cart">

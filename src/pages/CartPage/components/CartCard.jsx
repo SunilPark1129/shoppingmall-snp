@@ -52,29 +52,34 @@ function CartCard({ item }) {
         </div>
         <div className="cart__card-text">
           <div className="cart__card-top">
-            <h2>name</h2>
-            <div>
-              $ <span>{currencyFormat(item.productId.price)}</span>
-              {item.productId.sale !== 0 && (
-                <div className="sale__org-price__line"></div>
-              )}
-            </div>
-            {item.productId.sale !== 0 && (
-              <div className="sale__price-box">
-                <div className="sale__price__sale">
-                  {item.productId.sale}% OFF
+            <h2>{item.productId.name}</h2>
+            {item.productId.sale ? (
+              <div className="cart__card-price">
+                <div className="sale__org-price">
+                  $ <span>{currencyFormat(item.productId.price)}</span>
+                  <div className="sale__org-line"></div>
                 </div>
-                <div className="sale__price__applied">
-                  $<span>{currencyFormat(price)}</span>
+
+                <div className="sale__price-box">
+                  <div className="sale__price-sale">
+                    {item.productId.sale}% OFF
+                  </div>
+                  <div className="sale__price-applied">
+                    $<span>{currencyFormat(price)}</span>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <div>
+                  $ <span>{currencyFormat(item.productId.price)}</span>
+                  <div className="sale__org-price__line"></div>
                 </div>
               </div>
             )}
-            <div>Size: {item.size}</div>
-          </div>
-          <div className="cart__card-bot">
-            <div>Total: $ {currencyFormat(price * item.qty)}</div>
-            <div>
-              <div className="cart__card-qty">Quantity: </div>
+            <div>Size: {item.size.toUpperCase()}</div>
+            <div className="cart__card-qty">
+              <div>Quantity: </div>
               <select
                 onChange={(event) =>
                   handleQtyChange(item._id, event.target.value)
@@ -89,6 +94,9 @@ function CartCard({ item }) {
                 ))}
               </select>
             </div>
+          </div>
+          <div className="cart__card-bot">
+            <div>Total: $ {currencyFormat(price * item.qty)}</div>
           </div>
         </div>
         <div className="cart__card-btn">
