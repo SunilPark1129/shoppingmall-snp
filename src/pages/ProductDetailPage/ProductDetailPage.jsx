@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './style/productDetail.style.css';
-import { addToCart } from '../../features/cart/cartSlice';
+import { addToCart, getCartList } from '../../features/cart/cartSlice';
 import { getProductDetail } from '../../features/product/productSlice';
 import { resizeImage } from '../../utils/resizeImage';
 import { currencyFormat } from '../../utils/number';
@@ -14,16 +14,36 @@ const sizes = ['xs', 's', 'm', 'l', 'xl'];
 const ProductDetail = () => {
   const dispatch = useDispatch();
   const { selectedProduct, loading } = useSelector((state) => state.product);
+  const { cartList } = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user.user);
   const [size, setSize] = useState('');
   const { id } = useParams();
   const [sizeError, setSizeError] = useState(false);
-  const user = useSelector((state) => state.user.user);
   const navigate = useNavigate();
   const location = useLocation();
 
   const [selectedImg, setSelectedImg] = useState(0);
   const [imgList, setImgList] = useState([]);
   const [imgHide, setImgHide] = useState(false);
+  const [storedSizes, setStoredSizes] = useState([]);
+  const [isInCart, setIsInCart] = useState(false);
+
+  useEffect(() => {
+    if (selectedProduct && cartList) {
+      setStoredSizes(
+        cartList.filter(
+          ({ productId }) => productId._id === selectedProduct._id
+        )
+      );
+    }
+  }, [selectedProduct, cartList]);
+
+  useEffect(() => {
+    if (size) {
+      const has = storedSizes.find((item) => item.size === size);
+      setIsInCart(has ? true : false);
+    }
+  }, [storedSizes, size]);
 
   const addItemToCart = () => {
     //사이즈를 아직 선택안했다면 에러
@@ -48,6 +68,7 @@ const ProductDetail = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    dispatch(getCartList());
   }, []);
 
   useEffect(() => {
@@ -158,7 +179,7 @@ const ProductDetail = () => {
                     <button
                       disabled={!stockQty}
                       className={`product__size-item ${
-                        hasSelected && 'active'
+                        hasSelected && 'product__size-item--active'
                       }`}
                       onClick={() => selectSize(item)}
                       key={item}
@@ -170,9 +191,20 @@ const ProductDetail = () => {
                 })}
               </div>
             </div>
-            <button className="product__btn" onClick={addItemToCart}>
-              Add to cart
-            </button>
+            <div className="product__pay">
+              <button
+                className="product__btn"
+                disabled={isInCart}
+                onClick={addItemToCart}
+              >
+                {isInCart ? `Item is in cart` : 'Add to cart'}
+              </button>
+              {isInCart && (
+                <div>
+                  Quick Link: <Link to={'/cart'}>check out your cart</Link>
+                </div>
+              )}
+            </div>
             <em style={{ fontWeight: 'bold', color: 'red' }}>
               This website is a demo created for project purposes. The clothing
               featured here is from actual H&M collections. If you wish to

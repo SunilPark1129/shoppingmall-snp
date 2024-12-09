@@ -1,11 +1,11 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import api from "../../utils/api";
-import { showToastMessage } from "../common/uiSlice";
-import { currencyFormat } from "../../utils/number";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import api from '../../utils/api';
+import { showToastMessage } from '../common/uiSlice';
+import { currencyFormat } from '../../utils/number';
 
 const initialState = {
   loading: false,
-  error: "",
+  error: '',
   cartList: [],
   selectedItem: {},
   cartItemCount: 0,
@@ -14,84 +14,56 @@ const initialState = {
 
 // Async thunk actions
 export const addToCart = createAsyncThunk(
-  "cart/addToCart",
+  'cart/addToCart',
   async ({ id, size }, { rejectWithValue, dispatch }) => {
     try {
-      const response = await api.post("/cart", { productId: id, size, qty: 1 });
-      dispatch(
-        showToastMessage({
-          message: "Item has been added to the cart",
-          status: "success",
-        })
-      );
+      const response = await api.post('/cart', { productId: id, size, qty: 1 });
+      dispatch(getCartList());
       return response.data.cartItemQty;
     } catch (error) {
-      dispatch(
-        showToastMessage({
-          message: error.message,
-          status: "error",
-        })
-      );
       return rejectWithValue(error.message);
     }
   }
 );
 
 export const getCartList = createAsyncThunk(
-  "cart/getCartList",
+  'cart/getCartList',
   async (_, { rejectWithValue, dispatch }) => {
     try {
-      const response = await api.get("/cart");
+      const response = await api.get('/cart');
       return response.data.data;
     } catch (error) {
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const deleteCartItem = createAsyncThunk(
-  "cart/deleteCartItem",
+  'cart/deleteCartItem',
   async (id, { rejectWithValue, dispatch }) => {
     try {
       const response = await api.delete(`/cart/${id}`);
-      dispatch(
-        showToastMessage({
-          message: "Items have been removed from the cart",
-          status: "success",
-        })
-      );
+
       dispatch(getCartList());
     } catch (error) {
-      dispatch(
-        showToastMessage({
-          message: error.message,
-          status: "error",
-        })
-      );
       rejectWithValue(error.message);
     }
   }
 );
 
 export const deleteAllCartItem = createAsyncThunk(
-  "cart/deleteAllCartItem",
+  'cart/deleteAllCartItem',
   async (_, { rejectWithValue, dispatch }) => {
     try {
       await api.delete(`/cart/all`);
     } catch (error) {
-      dispatch(
-        showToastMessage({
-          message: error.message,
-          status: "error",
-        })
-      );
       rejectWithValue(error.message);
     }
   }
 );
 
 export const updateQty = createAsyncThunk(
-  "cart/updateQty",
+  'cart/updateQty',
   async ({ id, value }, { rejectWithValue }) => {
     try {
       const response = await api.put(`/cart/updateQty/${id}`, { qty: value });
@@ -103,10 +75,10 @@ export const updateQty = createAsyncThunk(
 );
 
 export const getCartQty = createAsyncThunk(
-  "cart/getCartQty",
+  'cart/getCartQty',
   async (_, { rejectWithValue, dispatch }) => {
     try {
-      const response = await api.get("/cart/getCartQty");
+      const response = await api.get('/cart/getCartQty');
       return response.data.qty;
     } catch (error) {
       rejectWithValue(error.message);
@@ -115,7 +87,7 @@ export const getCartQty = createAsyncThunk(
 );
 
 const cartSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState,
   reducers: {
     initialCart: (state) => {
@@ -130,7 +102,7 @@ const cartSlice = createSlice({
       })
       .addCase(addToCart.fulfilled, (state, action) => {
         state.loading = false;
-        state.error = "";
+        state.error = '';
         state.cartItemCount = action.payload;
       })
       .addCase(addToCart.rejected, (state, action) => {
@@ -142,7 +114,7 @@ const cartSlice = createSlice({
       })
       .addCase(getCartList.fulfilled, (state, action) => {
         state.loading = false;
-        state.error = "";
+        state.error = '';
         state.cartList = action.payload;
         state.cartItemCount = action.payload.length;
         const total = action.payload.reduce((total, item) => {
@@ -160,7 +132,7 @@ const cartSlice = createSlice({
       })
       .addCase(getCartQty.fulfilled, (state, action) => {
         state.loading = false;
-        state.error = "";
+        state.error = '';
         state.cartItemCount = action.payload;
       })
       .addCase(getCartQty.rejected, (state, action) => {
@@ -172,7 +144,7 @@ const cartSlice = createSlice({
       })
       .addCase(deleteCartItem.fulfilled, (state) => {
         state.loading = false;
-        state.error = "";
+        state.error = '';
       })
       .addCase(deleteCartItem.rejected, (state, action) => {
         state.loading = false;
@@ -183,7 +155,7 @@ const cartSlice = createSlice({
       })
       .addCase(updateQty.fulfilled, (state, action) => {
         state.loading = false;
-        state.error = "";
+        state.error = '';
 
         // 전체가격 계산
         let total = 0;
@@ -208,7 +180,7 @@ const cartSlice = createSlice({
       })
       .addCase(deleteAllCartItem.fulfilled, (state) => {
         state.loading = false;
-        state.error = "";
+        state.error = '';
         state.cartList = [];
         state.selectedItem = {};
         state.cartItemCount = 0;

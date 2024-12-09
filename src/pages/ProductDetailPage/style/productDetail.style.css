@@ -138,8 +138,23 @@
   border: 1px solid var(--clr-drk);
   background-color: rgb(242, 242, 242);
 }
-.product__size-item.active {
+.product__size-item--active {
   border: 1px solid var(--clr-drk);
+}
+.product__size-item--cart {
+  background-color: rgb(227, 204, 204) !important;
+  color: black !important;
+}
+
+.product__pay {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.product__pay a {
+  color: var(--clr-font-link);
+  text-decoration: underline;
+  margin-right: auto;
 }
 
 .product__btn {
@@ -147,9 +162,16 @@
   color: #fff;
   padding: 1em;
   font-size: 1em;
+  border: 1px solid transparent;
 }
 .product__btn:hover {
   background-color: #35393d;
+}
+.product__btn:disabled {
+  background-color: transparent;
+  border: 1px solid rgb(188, 188, 188);
+  cursor: not-allowed;
+  color: rgb(142, 142, 142);
 }
 
 .product__policy {
