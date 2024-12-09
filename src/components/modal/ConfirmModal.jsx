@@ -1,4 +1,5 @@
 import React from 'react';
+import './index.css';
 
 /** HOW TO USE THIS COMPONENT ->
   const [confirmOption, setConfirmOption] = useState({
@@ -36,8 +37,8 @@ function ConfirmModal({ setConfirmOption, confirmOption }) {
         </div>
         <p className="confirm-modal__message">{confirmOption.message}</p>
         <div className="confirm-modal__btn-box">
-          <button onClick={handleUpload}>YES</button>
           <button onClick={handleCancel}>NO</button>
+          <button onClick={handleUpload}>YES</button>
         </div>
       </div>
       <div
