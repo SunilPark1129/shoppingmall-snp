@@ -197,7 +197,7 @@ const ProductDetail = () => {
                 disabled={isInCart}
                 onClick={addItemToCart}
               >
-                {isInCart ? `Item is in cart` : 'Add to cart'}
+                {isInCart ? `Item added to cart` : 'Add to cart'}
               </button>
               {isInCart && (
                 <div>
