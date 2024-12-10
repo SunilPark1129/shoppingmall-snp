@@ -72,7 +72,7 @@ function SuccessPage() {
           </div>
           <div className="confirm-success__link">
             Please check your order confirmation in the My Orders section
-            <Link to={'/account/purchase'}>Go to My Orders</Link>
+            <Link to={'/order'}>Go to My Orders</Link>
           </div>
         </div>
       </div>
