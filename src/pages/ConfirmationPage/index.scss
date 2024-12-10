@@ -1,0 +1,52 @@
+.confirm-success {
+  padding: 4em 1em;
+  margin: auto;
+  .wrapper {
+    display: grid;
+    gap: 2em;
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    h1 {
+      font-size: 1.4em;
+      font-weight: bold;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+  }
+
+  &__fail {
+    color: rgb(203, 4, 4);
+    span {
+      font-weight: bold;
+    }
+  }
+
+  &__title {
+    color: var(--clr-font);
+    span {
+      font-weight: bold;
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1em;
+    color: var(--clr-font);
+
+    a {
+      color: var(--clr-font-link);
+      text-decoration: underline;
+    }
+  }
+}

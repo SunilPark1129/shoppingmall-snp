@@ -35,8 +35,6 @@ function PaymentInfo() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    console.log('here');
-
     const { firstName, lastName, contact, address, city, zip } = shipInfo;
     dispatch(
       createOrder({
@@ -55,7 +53,7 @@ function PaymentInfo() {
         }),
       })
     );
-    navigate('/payment/success');
+    navigate('/success');
   }
 
   const handlePaymentInfoChange = (event) => {

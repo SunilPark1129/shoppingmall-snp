@@ -1,0 +1,47 @@
+.confirm-success {
+  padding: 4em 1em;
+  margin: auto;
+}
+.confirm-success .wrapper {
+  display: grid;
+  gap: 2em;
+}
+.confirm-success header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+.confirm-success header h1 {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+.confirm-success__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+}
+.confirm-success__fail {
+  color: rgb(203, 4, 4);
+}
+.confirm-success__fail span {
+  font-weight: bold;
+}
+.confirm-success__title {
+  color: var(--clr-font);
+}
+.confirm-success__title span {
+  font-weight: bold;
+}
+.confirm-success__link {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1em;
+  color: var(--clr-font);
+}
+.confirm-success__link a {
+  color: var(--clr-font-link);
+  text-decoration: underline;
+}/*# sourceMappingURL=index.css.map */

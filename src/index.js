@@ -19,6 +19,8 @@ import AdminPage from './pages/AdminPage/AdminPage';
 import PaymentPage from './pages/PaymentPage/PaymentPage';
 import ProductDetail from './pages/ProductDetailPage/ProductDetailPage';
 import Loading from './components/common/Loading';
+import OrderPage from './pages/OrderPage/OrderPage';
+import SuccessPage from './pages/ConfirmationPage/SuccessPage';
 
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
@@ -47,8 +49,13 @@ const router = createBrowserRouter([
       {
         element: <PrivateRoute permissionLevel="customer" />,
         children: [
-          { path: '/cart', element: <CartPage /> },
-          { path: '/payment', element: <PaymentPage /> },
+          { path: 'cart', element: <CartPage /> },
+          {
+            path: 'payment',
+            element: <PaymentPage />,
+          },
+          { path: 'order', element: <OrderPage /> },
+          { path: 'success', element: <SuccessPage /> },
         ],
       },
       {
