@@ -15,8 +15,13 @@ function PaymentPage() {
 
   return (
     <main className="payment">
-      <PaymentInfo />
-      <OrderReceipt cartList={cartList} totalPrice={totalPrice} />
+      <div className="wrapper">
+        <h1>PAYMENT</h1>
+        <div className="payment__container">
+          <PaymentInfo />
+          <OrderReceipt cartList={cartList} totalPrice={totalPrice} />
+        </div>
+      </div>
     </main>
   );
 }

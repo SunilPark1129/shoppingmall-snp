@@ -35,6 +35,8 @@ function PaymentInfo() {
   function handleSubmit(e) {
     e.preventDefault();
 
+    console.log('here');
+
     const { firstName, lastName, contact, address, city, zip } = shipInfo;
     dispatch(
       createOrder({
@@ -70,11 +72,11 @@ function PaymentInfo() {
     setCardValue({ ...cardValue, focus: e.target.name });
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <section className="payment__address">
+    <form onSubmit={handleSubmit} className="payment__form">
+      <section className="payment__section">
         <h2>Shipping Address</h2>
-        <div className="payment__address-content">
-          <div className="payment__address-row">
+        <div className="payment__section-content">
+          <div className="payment__flex">
             <label>
               Last Name
               <input type="text" required autoComplete="off" name="lastName" />
@@ -107,7 +109,7 @@ function PaymentInfo() {
             />
           </label>
 
-          <div className="payment__address-row">
+          <div className="payment__flex">
             <label>
               City
               <input type="text" required autoComplete="off" name="city" />
@@ -119,14 +121,12 @@ function PaymentInfo() {
           </div>
         </div>
       </section>
-      <section>
-        <h2>Payment Methods</h2>
-        <PaymentForm
-          handleInputFocus={handleInputFocus}
-          cardValue={cardValue}
-          handlePaymentInfoChange={handlePaymentInfoChange}
-        />
-      </section>
+
+      <PaymentForm
+        handleInputFocus={handleInputFocus}
+        cardValue={cardValue}
+        handlePaymentInfoChange={handlePaymentInfoChange}
+      />
 
       <button className="payment__submit" type="submit">
         Checkout

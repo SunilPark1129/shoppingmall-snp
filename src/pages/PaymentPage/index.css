@@ -1,1 +1,82 @@
-/*# sourceMappingURL=index.css.map */
+.payment {
+  margin-bottom: 6rem;
+}
+.payment__container {
+  display: flex;
+  width: 100%;
+  padding: 1em;
+  gap: 2em;
+}
+.payment h1 {
+  padding: 3rem 1rem;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+.payment__flex {
+  display: flex;
+  gap: 1.5em;
+}
+.payment__flex label {
+  width: 100%;
+}
+.payment label {
+  color: var(--clr-font);
+}
+.payment input {
+  font-size: 1rem;
+  padding: 0.75rem;
+  border: 1px solid rgb(169, 169, 169);
+  border-radius: 4px;
+  color: var(--clr-font);
+}
+.payment input::-moz-placeholder {
+  color: rgb(184, 184, 184);
+}
+.payment input::placeholder {
+  color: rgb(184, 184, 184);
+}
+.payment input:focus {
+  outline: 4px solid rgb(194, 208, 240);
+}
+.payment__submit {
+  padding: 1rem;
+  background-color: var(--clr-font);
+  color: #fff;
+  font-size: 1em;
+}
+.payment__submit:hover {
+  background-color: black;
+}
+
+.payment__form {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 50%;
+  gap: 3em;
+}
+.payment__form h2 {
+  font-size: 1.4em;
+}
+.payment__form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.payment__section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2em;
+}
+.payment__section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+@media (max-width: 950px) {
+  .payment__content {
+    flex-direction: column;
+  }
+}/*# sourceMappingURL=index.css.map */

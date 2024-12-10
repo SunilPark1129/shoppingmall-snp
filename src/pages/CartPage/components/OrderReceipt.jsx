@@ -6,6 +6,8 @@ function OrderReceipt({ cartList, totalPrice }) {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const isPayment = location.pathname === '/payment';
+
   return (
     <article className="cart__info">
       <h2>Order History</h2>
@@ -25,7 +27,9 @@ function OrderReceipt({ cartList, totalPrice }) {
 
               return (
                 <section className="cart__price-card" key={_id}>
-                  <h3>{name}</h3>
+                  <h3>
+                    {name} *{qty}
+                  </h3>
                   <div>$ {currencyFormat(price * qty)}</div>
                 </section>
               );
@@ -40,7 +44,7 @@ function OrderReceipt({ cartList, totalPrice }) {
           <div>$ {totalPrice}</div>
         </div>
       </div>
-      {cartList.length > 0 && (
+      {cartList.length > 0 && !isPayment && (
         <button
           className="cart__price-btn"
           onClick={() => navigate('/payment')}
