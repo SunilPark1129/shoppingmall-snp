@@ -14,21 +14,30 @@ function OrderPage() {
 
   if (orderList?.length === 0) {
     return (
-      <div className="no-order-box">
-        <div>There are no ongoing orders</div>
-      </div>
+      <main className="order">
+        <div className="wrapper">
+          <div className="content">
+            <div className="order__empty">
+              <h1>There are no ongoing orders</h1>
+            </div>
+          </div>
+        </div>
+      </main>
     );
   }
   return (
-    <div className="status-card-container">
-      {orderList.map((item) => (
-        <OrderStatusCard
-          orderItem={item}
-          className="status-card-container"
-          key={item._id}
-        />
-      ))}
-    </div>
+    <main className="order">
+      <div className="wrapper">
+        <div className="content">
+          <h1>Your Order History</h1>
+          <div className="order__grid">
+            {orderList.map((item) => (
+              <OrderStatusCard orderItem={item} key={item._id} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }
 
