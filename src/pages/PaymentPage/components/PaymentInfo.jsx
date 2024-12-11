@@ -16,14 +16,6 @@ function PaymentInfo() {
     number: '',
   });
   const navigate = useNavigate();
-  const [shipInfo, setShipInfo] = useState({
-    firstName: '',
-    lastName: '',
-    contact: '',
-    address: '',
-    city: '',
-    zip: '',
-  });
 
   useEffect(() => {
     // when cart is empty -> kick
@@ -35,24 +27,29 @@ function PaymentInfo() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const { firstName, lastName, contact, address, city, zip } = shipInfo;
-    dispatch(
-      createOrder({
-        cardValue,
-        shipTo: { address, city, zip },
-        contact: { firstName, lastName, contact },
-        totalPrice,
-        orderList: cartList.map((item) => {
-          return {
-            productId: item.productId._id,
-            price: item.productId.price,
-            qty: item.qty,
-            size: item.size,
-            sale: item.productId.sale,
-          };
-        }),
-      })
-    );
+    const { firstName, lastName, contact, address, city, zip } = e.target;
+
+    const payload = {
+      cardValue,
+      shipTo: { address: address.value, city: city.value, zip: zip.value },
+      contact: {
+        firstName: firstName.value,
+        lastName: lastName.value,
+        contact: contact.value,
+      },
+      totalPrice,
+      orderList: cartList.map((item) => {
+        return {
+          productId: item.productId._id,
+          price: item.productId.price,
+          qty: item.qty,
+          size: item.size,
+          sale: item.productId.sale,
+        };
+      }),
+    };
+
+    dispatch(createOrder(payload));
     navigate('/success');
   }
 
