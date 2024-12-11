@@ -9,27 +9,27 @@ import ArrowRightIcon from '../../../../assets/icons/ArrowRightIcon';
 function Home({ loading, productListHome }) {
   const items = [
     {
-      label: 'Women Top Today',
+      label: 'Women Top',
       to: '/?category=female&category=top',
       data: productListHome?.female_top,
     },
     {
-      label: 'Women Pants Today',
+      label: 'Women Pants',
       to: '/?category=female&category=pants',
       data: productListHome?.female_pants,
     },
     {
-      label: 'Women Dress Today',
+      label: 'Women Dress',
       to: '/?category=female&category=dress',
       data: productListHome?.female_dress,
     },
     {
-      label: 'Men Top Today',
+      label: 'Men Top',
       to: '/?category=male&category=top',
       data: productListHome?.male_top,
     },
     {
-      label: 'Men Pants Today',
+      label: 'Men Pants',
       to: '/?category=male&category=pants',
       data: productListHome?.male_pants,
     },

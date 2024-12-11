@@ -1,6 +1,6 @@
 .home .landing__container {
   padding: 1em 0;
-  gap: 10em;
+  gap: 4em;
 }
 
 .landing__header {
@@ -66,9 +66,10 @@
   gap: 0.5em;
 }
 .landing__home-top h2 {
-  font-size: 1.6em;
+  color: var(--clr-font);
+  font-size: 1.4em;
   font-weight: bold;
-  padding: 2em 4px;
+  padding: 1em 4px;
 }
 .landing__home-top a {
   color: var(--clr-font-md);

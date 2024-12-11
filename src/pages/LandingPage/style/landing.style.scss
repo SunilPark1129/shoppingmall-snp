@@ -1,7 +1,7 @@
 .home {
   .landing__container {
     padding: 1em 0;
-    gap: 10em;
+    gap: 4em;
   }
 }
 
@@ -74,9 +74,10 @@
       gap: 0.5em;
 
       h2 {
-        font-size: 1.6em;
+        color: var(--clr-font);
+        font-size: 1.4em;
         font-weight: bold;
-        padding: 2em 4px;
+        padding: 1em 4px;
       }
       a {
         color: var(--clr-font-md);
