@@ -1,29 +1,26 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import { showToastMessage } from "../common/uiSlice";
-import api from "../../utils/api";
-import { initialCart } from "../cart/cartSlice";
+import { showToastMessage } from '../common/uiSlice';
+import api from '../../utils/api';
+import { initialCart } from '../cart/cartSlice';
 
 export const loginWithEmail = createAsyncThunk(
-  "user/loginWithEmail",
-  async ({ email, password }, { dispatch, rejectWithValue }) => {
+  'user/loginWithEmail',
+  async ({ email, password }, { rejectWithValue }) => {
     try {
-      // 성공
-      const response = await api.post("/auth/login", { email, password });
-      // 카트 숫자 넣을 예정
+      const response = await api.post('/auth/login', { email, password });
       return response.data;
     } catch (error) {
-      // 실패시 생긴 에러값을 reducer에 저장
       return rejectWithValue(error.message);
     }
   }
 );
 
 export const loginWithGoogle = createAsyncThunk(
-  "user/loginWithGoogle",
+  'user/loginWithGoogle',
   async (token, { rejectWithValue }) => {
     try {
-      const response = await api.post("/auth/google", { token });
+      const response = await api.post('/auth/google', { token });
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -32,46 +29,30 @@ export const loginWithGoogle = createAsyncThunk(
 );
 
 export const logout = () => (dispatch) => {
-  sessionStorage.clear("token");
+  sessionStorage.clear('token');
   dispatch(clearUser());
   dispatch(initialCart());
 };
 
 export const registerUser = createAsyncThunk(
-  "user/registerUser",
-  async (
-    { email, name, password, navigate },
-    { dispatch, rejectWithValue }
-  ) => {
+  'user/registerUser',
+  async ({ email, name, password, navigate }, { rejectWithValue }) => {
     try {
-      const response = await api.post("/user", { email, name, password });
-
-      dispatch(
-        showToastMessage({
-          message: "You have successfully registered",
-          status: "success",
-        })
-      );
-      navigate("/login");
+      const response = await api.post('/user', { email, name, password });
+      navigate('/login');
 
       return response.data.data;
     } catch (error) {
-      dispatch(
-        showToastMessage({
-          message: error.message,
-          status: "error",
-        })
-      );
-      return rejectWithValue(error.error);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const loginWithToken = createAsyncThunk(
-  "user/loginWithToken",
-  async (_, { dispatch, rejectWithValue }) => {
+  'user/loginWithToken',
+  async (_, { rejectWithValue }) => {
     try {
-      const response = await api.get("/user/me");
+      const response = await api.get('/user/me');
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -80,7 +61,7 @@ export const loginWithToken = createAsyncThunk(
 );
 
 const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState: {
     user: null,
     loading: false,
@@ -114,7 +95,7 @@ const userSlice = createSlice({
         state.loading = true;
       })
       .addCase(loginWithEmail.fulfilled, (state, action) => {
-        sessionStorage.setItem("token", action.payload.token);
+        sessionStorage.setItem('token', action.payload.token);
         state.loading = false;
         state.user = action.payload.user;
         state.loginError = null;
@@ -130,7 +111,6 @@ const userSlice = createSlice({
         state.loading = true;
       })
       .addCase(loginWithGoogle.fulfilled, (state, action) => {
-        sessionStorage.setItem("token", action.payload.token);
         state.loading = false;
         state.user = action.payload.user;
         state.loginError = null;

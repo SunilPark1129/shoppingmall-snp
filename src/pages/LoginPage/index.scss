@@ -8,6 +8,16 @@
     max-width: 30rem;
     width: 100%;
   }
+  .input-row {
+    display: flex;
+    flex-direction: row;
+  }
+  label:has(input[type='checkbox']) {
+    margin-right: auto;
+    &:focus {
+      outline: 1px solid blue;
+    }
+  }
   &__content {
     padding: 2em 1em;
     color: var(--clr-font);

@@ -9,6 +9,16 @@
   max-width: 30rem;
   width: 100%;
 }
+.login .input-row {
+  display: flex;
+  flex-direction: row;
+}
+.login label:has(input[type=checkbox]) {
+  margin-right: auto;
+}
+.login label:has(input[type=checkbox]):focus {
+  outline: 1px solid blue;
+}
 .login__content {
   padding: 2em 1em;
   color: var(--clr-font);
