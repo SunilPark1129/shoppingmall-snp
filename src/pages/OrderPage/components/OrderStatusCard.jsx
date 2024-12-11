@@ -50,6 +50,7 @@ function OrderStatusCard({ orderItem }) {
       </div>
       {hasOpen && (
         <div className="order__card-grid">
+          <div className="line"></div>
           {orderItem.items.map(({ price, productId, qty, size, sale }, idx) => {
             const { image, name } = productId;
             const finalPrice = price * (1 - sale / 100);
