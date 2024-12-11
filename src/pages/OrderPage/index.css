@@ -1,5 +1,6 @@
 .order {
   padding: 4em 1em;
+  margin: auto;
 }
 .order .wrapper {
   max-width: 60em;
@@ -17,6 +18,11 @@
   width: 6em;
   height: 9em;
   flex-shrink: 0;
+}
+.order__empty {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 .order__grid {
   display: flex;

@@ -18,7 +18,8 @@ function OrderPage() {
         <div className="wrapper">
           <div className="content">
             <div className="order__empty">
-              <h1>There are no ongoing orders</h1>
+              <h1>Your Order History</h1>
+              <p>There are no ongoing orders</p>
             </div>
           </div>
         </div>
