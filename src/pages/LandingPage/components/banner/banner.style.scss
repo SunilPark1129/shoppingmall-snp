@@ -134,7 +134,7 @@
   position: absolute;
   right: 3%;
   bottom: 6rem;
-  gap: 2em;
+  gap: 1em;
   z-index: 9;
 }
 
@@ -170,7 +170,7 @@
 
 .banner__arrow {
   display: flex;
-  gap: 2em;
+  gap: 1em;
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
@@ -189,14 +189,17 @@
     cursor: pointer;
     border: none;
     background-color: transparent;
+    background-color: #10101071;
+    padding: 1em;
+    border-radius: 8px;
   }
 
   button:nth-of-type(2) {
     transform: rotateY(180deg);
   }
 
-  button:hover svg path {
-    stroke: rgb(219, 54, 54);
+  button:hover {
+    background-color: #101010;
   }
 }
 
