@@ -1,40 +1,60 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Skeleton from '../../../../components/common/Skeleton';
 import { Link } from 'react-router-dom';
 import Card from '../../../../components/grid/Card';
 import Banner from '../banner/Banner';
 import ItemEmpty from '../itemEmpty/ItemEmpty';
 import ArrowRightIcon from '../../../../assets/icons/ArrowRightIcon';
+import Slider from '../../../../components/slider/Slider';
 
 function Home({ loading, productListHome }) {
+  const [sliderView, setSliderView] = useState(4);
   const items = [
     {
-      label: 'Women Top',
+      label: "WOMEN'S TOP",
       to: '/?category=female&category=top',
       data: productListHome?.female_top,
     },
     {
-      label: 'Women Pants',
+      label: "WOMEN'S PANTS",
       to: '/?category=female&category=pants',
       data: productListHome?.female_pants,
     },
     {
-      label: 'Women Dress',
+      label: "WOMEN'S DRESS",
       to: '/?category=female&category=dress',
       data: productListHome?.female_dress,
     },
     {
-      label: 'Men Top',
+      label: "MEN'S TOP",
       to: '/?category=male&category=top',
       data: productListHome?.male_top,
     },
     {
-      label: 'Men Pants',
+      label: "MEN'S PANTS",
       to: '/?category=male&category=pants',
       data: productListHome?.male_pants,
     },
   ];
 
+  useEffect(() => {
+    function resizeHandler() {
+      if (window.innerWidth > 1000) {
+        setSliderView(4);
+      } else if (window.innerWidth > 500) {
+        setSliderView(2);
+      } else {
+        setSliderView(1);
+      }
+    }
+
+    resizeHandler();
+    window.addEventListener('resize', resizeHandler);
+
+    return () => {
+      window.removeEventListener('resize', resizeHandler);
+    };
+  }, []);
   if (!loading && !productListHome) return <ItemEmpty />;
   return (
     <main className="landing home">
@@ -53,18 +73,7 @@ function Home({ loading, productListHome }) {
                   </Link>
                 </div>
                 <div className="landing__home-bot">
-                  <div className="grid">
-                    {data &&
-                      data.map((item) => (
-                        <Card
-                          item={item}
-                          key={item._id}
-                          name={null}
-                          category={null}
-                          imgFront={false}
-                        />
-                      ))}
-                  </div>
+                  <Slider data={data} sliderView={sliderView} />
                 </div>
               </section>
             ))

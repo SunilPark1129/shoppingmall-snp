@@ -1,0 +1,31 @@
+.swiper {
+  position: relative;
+}
+.swiper__btn-box {
+  position: absolute;
+  left: 1em;
+  right: 1em;
+  top: 50%;
+  z-index: 99;
+  transform: translateY(-50%);
+  display: flex;
+}
+.swiper__btn {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.171);
+  width: 3.5em;
+  height: 3.5em;
+  border-radius: 50%;
+}
+.swiper__btn svg {
+  fill: #fff;
+}
+.swiper__btn--prev {
+  left: 0;
+}
+.swiper__btn--next {
+  right: 0;
+}
+.swiper__btn:hover {
+  background-color: rgba(0, 0, 0, 0.561);
+}/*# sourceMappingURL=slider.style.css.map */
