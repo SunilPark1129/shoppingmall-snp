@@ -111,6 +111,7 @@ const userSlice = createSlice({
         state.loading = true;
       })
       .addCase(loginWithGoogle.fulfilled, (state, action) => {
+        sessionStorage.setItem('token', action.payload.token);
         state.loading = false;
         state.user = action.payload.user;
         state.loginError = null;
