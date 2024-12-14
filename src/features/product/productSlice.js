@@ -40,6 +40,20 @@ export const getProductListHome = createAsyncThunk(
   }
 );
 
+export const getAdminProductList = createAsyncThunk(
+  'products/getAdminProductList',
+  async (query, { rejectWithValue }) => {
+    try {
+      const response = await api.get('/product', { params: { ...query } });
+      response.data.page = query.page;
+
+      return response.data;
+    } catch (error) {
+      rejectWithValue(error.message);
+    }
+  }
+);
+
 export const getProductDetail = createAsyncThunk(
   'products/getProductDetail',
   async (id, { rejectWithValue }) => {
@@ -221,6 +235,20 @@ const productSlice = createSlice({
         state.error = '';
       })
       .addCase(getProductDetail.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(getAdminProductList.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(getAdminProductList.fulfilled, (state, action) => {
+        state.loading = false;
+        state.productList = action.payload.data;
+        state.totalPageNum = action.payload.totalPageNum;
+        state.page = action.payload.page;
+        state.error = '';
+      })
+      .addCase(getAdminProductList.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

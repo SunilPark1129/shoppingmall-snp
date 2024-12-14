@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   clearError,
   deleteProduct,
-  getProductList,
+  getAdminProductList,
   setSelectedProduct,
 } from '../../../features/product/productSlice';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -48,7 +48,7 @@ function AdminProduct() {
 
   //상품리스트 가져오기 (url쿼리 맞춰서)
   useEffect(() => {
-    dispatch(getProductList({ page: queryPage, name: queryName }));
+    dispatch(getAdminProductList({ page: queryPage, name: queryName }));
   }, [query]);
 
   async function confirmDelete(id) {
