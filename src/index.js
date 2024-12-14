@@ -21,6 +21,8 @@ import ProductDetail from './pages/ProductDetailPage/ProductDetailPage';
 import Loading from './components/common/Loading';
 import OrderPage from './pages/OrderPage/OrderPage';
 import SuccessPage from './pages/ConfirmationPage/SuccessPage';
+import AdminOrder from './pages/AdminPage/components/AdminOrder';
+import AdminProduct from './pages/AdminPage/components/AdminProduct';
 
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
@@ -60,7 +62,16 @@ const router = createBrowserRouter([
       },
       {
         element: <PrivateRoute permissionLevel="admin" />,
-        children: [{ path: '/admin', element: <AdminPage /> }],
+        children: [
+          {
+            path: '/admin',
+            element: <AdminPage />,
+            children: [
+              { path: 'product', element: <AdminProduct /> },
+              { path: 'order', element: <AdminOrder /> },
+            ],
+          },
+        ],
       },
     ],
   },
