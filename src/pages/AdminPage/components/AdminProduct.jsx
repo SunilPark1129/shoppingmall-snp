@@ -34,7 +34,6 @@ function AdminProduct() {
   });
 
   const tableHeader = [
-    '#',
     'Sku',
     'Name',
     'Price',
@@ -42,7 +41,7 @@ function AdminProduct() {
     'Stock',
     'Image',
     'Status',
-    '',
+    'Button',
   ];
 
   const [openSaleForm, setOpenSaleForm] = useState(false);
@@ -96,13 +95,16 @@ function AdminProduct() {
   };
 
   return (
-    <div className="locate-center">
+    <article className="admin__product">
+      <h1>Product Management</h1>
       {loading && <Loading />}
-      <div>
-        <div className="mt-2">
+      <div className="content">
+        <div className="admin__top">
           <SearchBox placeholder="Product Name" field={'name'} />
+          <button className="admin__product-add" onClick={handleClickNewItem}>
+            Add New Item
+          </button>
         </div>
-        <button onClick={handleClickNewItem}>Add New Item +</button>
 
         <ProductTable
           header={tableHeader}
@@ -111,6 +113,7 @@ function AdminProduct() {
           openEditForm={openEditForm}
           setOpenSaleForm={setOpenSaleForm}
         />
+
         <ReactPaginate
           nextLabel=">"
           onPageChange={handlePageClick}
@@ -158,7 +161,7 @@ function AdminProduct() {
           confirmOption={confirmOption}
         />
       )} */}
-    </div>
+    </article>
   );
 }
 

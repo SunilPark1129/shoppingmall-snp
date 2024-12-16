@@ -1,16 +1,24 @@
 import React from 'react';
 import './index.css';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 function AdminPage() {
+  const location = useLocation();
+  const isActive = location.pathname === '/admin/product';
   return (
     <main className="admin">
-      <aside className="admin__aside">
-        <Link to={'/product'}>Product</Link>
-        <Link to={'/Order'}>Order</Link>
-      </aside>
       <div className="wrapper">
-        <Outlet />
+        <div className="container">
+          <nav>
+            <Link className={isActive ? 'isActive' : ''} to={'product'}>
+              Product
+            </Link>
+            <Link className={!isActive ? 'isActive' : ''} to={'order'}>
+              Order
+            </Link>
+          </nav>
+          <Outlet />
+        </div>
       </div>
     </main>
   );
