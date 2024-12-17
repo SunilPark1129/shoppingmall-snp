@@ -9,7 +9,7 @@ function SearchBox({ placeholder, field }) {
 
   const handleSearch = () => {
     if (keyword === '') {
-      navigate('/page=1');
+      return;
     }
     navigate(`?page=1&name=${keyword}`);
   };
