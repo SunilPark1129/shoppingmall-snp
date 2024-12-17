@@ -12,6 +12,7 @@ import SearchBox from '../../../components/searchBox/SearchBox';
 import ReactPaginate from 'react-paginate';
 import ProductTable from './ProductTable';
 import NewItemDialog from './NewItemDialog';
+import ConfirmModal from '../../../components/modal/ConfirmModal';
 
 function AdminProduct() {
   const navigate = useNavigate();
@@ -155,12 +156,12 @@ function AdminProduct() {
         />
       )} */}
 
-      {/* {confirmOption.open && (
+      {confirmOption.open && (
         <ConfirmModal
           setConfirmOption={setConfirmOption}
           confirmOption={confirmOption}
         />
-      )} */}
+      )}
     </article>
   );
 }

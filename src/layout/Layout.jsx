@@ -5,6 +5,7 @@ import Footer from '../components/common/Footer';
 import './index.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginWithToken } from '../features/user/userSlice';
+import { getCartQty } from '../features/cart/cartSlice';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function Layout() {
 
   useEffect(() => {
     if (user) {
-      // dispatch(getCartQty());
+      dispatch(getCartQty());
     }
   }, [user]);
 

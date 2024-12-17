@@ -44,31 +44,10 @@ const ProductTable = ({
                   <img src={image} width={100} alt="image" />
                 </td>
                 <td>{item.status}</td>
-                <td
-                  style={{
-                    minWidth: '100px',
-                  }}
-                >
-                  <button
-                    size="sm"
-                    variant="danger"
-                    onClick={() => deleteItem(item._id)}
-                    className="mr-1"
-                  >
-                    -
-                  </button>
-                  <button
-                    size="sm"
-                    onClick={() => openEditForm(item)}
-                    className="mr-1"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    size="sm"
-                    onClick={() => setOpenSaleForm({ open: true, item })}
-                    variant="warning"
-                  >
+                <td>
+                  <button onClick={() => deleteItem(item._id)}>-</button>
+                  <button onClick={() => openEditForm(item)}>Edit</button>
+                  <button onClick={() => setOpenSaleForm({ open: true, item })}>
                     Sale
                   </button>
                 </td>

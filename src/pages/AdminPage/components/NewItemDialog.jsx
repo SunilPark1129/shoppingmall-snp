@@ -6,9 +6,8 @@ import {
   editProduct,
   getProductList,
 } from '../../../features/product/productSlice';
-import { CATEGORY, SIZE, STATUS } from '../../../constants/product.constants';
+import { CATEGORY, SIZE } from '../../../constants/product.constants';
 import CloudinaryUploadWidget from '../../../components/cloudinary/CloudinaryUploadWidget';
-import ConfirmModal from '../../../components/modal/ConfirmModal';
 
 const cloudName = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME;
 const uploadPreset = process.env.REACT_APP_CLOUDINARY_PRESET;
@@ -359,12 +358,6 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog, page, name }) => {
         </div>
       </div>
       <div className="modal-bg" onClick={handleClose}></div>
-      {confirmOption.open && (
-        <ConfirmModal
-          setConfirmOption={setConfirmOption}
-          confirmOption={confirmOption}
-        />
-      )}
     </>
   );
 };

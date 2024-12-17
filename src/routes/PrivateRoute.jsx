@@ -3,14 +3,15 @@ import { useSelector } from 'react-redux';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 function PrivateRoute({ permissionLevel }) {
-  const location = useLocation();
   // permissionlevel -> admin || customer
-  const isAuthenticated = useSelector((store) => store.user.user);
+  const user = useSelector((state) => state.user.user);
+  const isAuthenticated =
+    user?.level === permissionLevel || user?.level === 'admin';
 
   return isAuthenticated ? (
     <Outlet permissionLevel={permissionLevel} />
   ) : (
-    <Navigate to="/login" state={{ from: location }} />
+    <Navigate to="/login" />
   );
 }
 
