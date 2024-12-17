@@ -265,3 +265,33 @@
     border-radius: 4px;
   }
 }
+
+// pagination
+
+.page {
+  &-link {
+    cursor: pointer;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    user-select: none;
+  }
+}
+
+.admin__product {
+  .pagination {
+    display: flex;
+    gap: 1rem;
+    margin: auto;
+    width: 100%;
+    max-width: 30rem;
+    justify-content: space-between;
+  }
+  .active {
+    background-color: var(--clr-primary);
+    color: #fff;
+  }
+}

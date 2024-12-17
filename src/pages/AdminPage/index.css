@@ -237,4 +237,30 @@
   background-color: var(--clr-primary);
   color: #fff;
   border-radius: 4px;
+}
+
+.page-link {
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.admin__product .pagination {
+  display: flex;
+  gap: 1rem;
+  margin: auto;
+  width: 100%;
+  max-width: 30rem;
+  justify-content: space-between;
+}
+.admin__product .active {
+  background-color: var(--clr-primary);
+  color: #fff;
 }/*# sourceMappingURL=index.css.map */

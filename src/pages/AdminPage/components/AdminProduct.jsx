@@ -107,14 +107,6 @@ function AdminProduct() {
           </button>
         </div>
 
-        <ProductTable
-          header={tableHeader}
-          data={productList}
-          deleteItem={deleteItem}
-          openEditForm={openEditForm}
-          setOpenSaleForm={setOpenSaleForm}
-        />
-
         <ReactPaginate
           nextLabel=">"
           onPageChange={handlePageClick}
@@ -135,7 +127,14 @@ function AdminProduct() {
           breakLinkClassName="page-link"
           containerClassName="pagination"
           activeClassName="active"
-          className="list-style-none"
+        />
+
+        <ProductTable
+          header={tableHeader}
+          data={productList}
+          deleteItem={deleteItem}
+          openEditForm={openEditForm}
+          setOpenSaleForm={setOpenSaleForm}
         />
       </div>
 

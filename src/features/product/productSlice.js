@@ -68,15 +68,9 @@ export const getProductDetail = createAsyncThunk(
 
 export const createProduct = createAsyncThunk(
   'products/createProduct',
-  async (formData, { dispatch, rejectWithValue }) => {
+  async (formData, { rejectWithValue }) => {
     try {
       const response = await api.post('/product', formData);
-      dispatch(
-        showToastMessage({
-          message: 'Product creation completed',
-          status: 'success',
-        })
-      );
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -89,12 +83,6 @@ export const deleteProduct = createAsyncThunk(
   async ({ id, page, name }, { dispatch, rejectWithValue }) => {
     try {
       const response = await api.delete(`/product/${id}`);
-      dispatch(
-        showToastMessage({
-          message: 'Product deletion completed',
-          status: 'success',
-        })
-      );
       if (page) {
         dispatch(getProductList({ page, name }));
       }
@@ -110,12 +98,6 @@ export const editProduct = createAsyncThunk(
   async ({ id, ...formData }, { dispatch, rejectWithValue }) => {
     try {
       const response = await api.put(`/product/${id}`, formData);
-      dispatch(
-        showToastMessage({
-          message: 'Product update completed',
-          status: 'success',
-        })
-      );
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -128,12 +110,6 @@ export const saleProduct = createAsyncThunk(
   async ({ id, sale }, { dispatch, rejectWithValue }) => {
     try {
       const response = await api.put(`/product/sale/${id}`, { sale });
-      dispatch(
-        showToastMessage({
-          message: 'sale update completed',
-          status: 'success',
-        })
-      );
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -167,7 +143,7 @@ const productSlice = createSlice({
       .addCase(createProduct.fulfilled, (state, action) => {
         state.loading = false;
         state.error = '';
-        state.success = true; // 상품 생성을 성공하면 다이얼로그를 닫고, 실패시 실패메시지를 다이어로그에 보여주고 닫지 않음
+        state.success = true;
       })
       .addCase(createProduct.rejected, (state, action) => {
         state.loading = false;
