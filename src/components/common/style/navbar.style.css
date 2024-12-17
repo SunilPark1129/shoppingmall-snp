@@ -14,6 +14,12 @@
   background-color: var(--clr-bg);
   z-index: 998;
 }
+.navbar__admin {
+  color: #fff;
+  background-color: var(--clr-warn);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
 .navbar__menu {
   display: flex;
   align-items: center;

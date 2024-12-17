@@ -97,13 +97,7 @@ function Navbar({ user }) {
       <div className="navbar-size"></div>
       <header className="navbar">
         {/* admin page button */}
-        {/*         
-        {user && user.level === 'admin' && (
-          <Link to="/admin/product?page=1">
-            Admin page
-          </Link>
-        )}
-       */}
+
         <nav className="navbar__content">
           <div className="navbar__top">
             <div className="navbar__top-box navbar__top-box--left">
@@ -117,6 +111,12 @@ function Navbar({ user }) {
               </div>
             </div>
             <div className="navbar__top-box navbar__top-box--right">
+              {user && user.level === 'admin' && (
+                <Link className="navbar__admin" to="/admin/product?page=1">
+                  Admin page
+                </Link>
+              )}
+
               <label className="searchbar mobile-disappear">
                 <div
                   className="searchbar__svg svg-box"
