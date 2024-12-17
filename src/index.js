@@ -68,7 +68,8 @@ const router = createBrowserRouter([
             element: <AdminPage />,
             children: [
               { path: 'product', element: <AdminProduct /> },
-              { path: 'order', element: <AdminOrder /> },
+              // order page is not updated -> may adding in future
+              // { path: 'order', element: <AdminOrder /> },
             ],
           },
         ],

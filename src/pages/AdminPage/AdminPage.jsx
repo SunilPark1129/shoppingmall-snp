@@ -9,14 +9,15 @@ function AdminPage() {
     <main className="admin">
       <div className="wrapper">
         <div className="container">
-          <nav>
+          {/* admin order page is not updated */}
+          {/* <nav>
             <Link className={isActive ? 'isActive' : ''} to={'product'}>
               Product
             </Link>
             <Link className={!isActive ? 'isActive' : ''} to={'order'}>
               Order
             </Link>
-          </nav>
+          </nav> */}
           <Outlet />
         </div>
       </div>
