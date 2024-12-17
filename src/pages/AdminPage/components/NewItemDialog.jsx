@@ -8,6 +8,7 @@ import {
 } from '../../../features/product/productSlice';
 import { CATEGORY, SIZE, STATUS } from '../../../constants/product.constants';
 import CloudinaryUploadWidget from '../../../components/cloudinary/CloudinaryUploadWidget';
+import ConfirmModal from '../../../components/modal/ConfirmModal';
 
 const cloudName = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME;
 const uploadPreset = process.env.REACT_APP_CLOUDINARY_PRESET;
@@ -253,7 +254,7 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog, page, name }) => {
                           defaultValue={item[0] ? item[0].toLowerCase() : ''}
                         >
                           <option value="" disabled hidden>
-                            Please Choose...
+                            Size
                           </option>
                           {SIZE.map((item, index) => (
                             <option
@@ -274,14 +275,14 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog, page, name }) => {
                             handleStockChange(event.target.value, index)
                           }
                           type="number"
-                          placeholder="number of stock"
+                          placeholder="qty"
                           value={item[1]}
                           min={0}
                           required
                         />
                       </div>
                       <div>
-                        <button onClick={() => deleteStock(index)}>-</button>
+                        <button onClick={() => deleteStock(index)}>x</button>
                       </div>
                     </div>
                   );
@@ -297,27 +298,21 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog, page, name }) => {
                   uploadImage={uploadImage}
                 />
               </label>
-              <div className="admin__upload-image-list">
-                {formData.image.length > 0 && (
-                  <div className="admin__upload-image-card">
-                    {formData.image.map(({ url, id }) => (
-                      <div
-                        className="image-container"
-                        alt="uploadedimage"
-                        key={id}
-                        onClick={() => deleteImgHandler(id)}
-                      >
-                        <img
-                          id="uploadedimage"
-                          src={url}
-                          alt="uploaded image"
-                        />
-                        <div className="image-container__delete">삭제</div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+              {formData.image.length > 0 && (
+                <div className="admin__upload-image-list">
+                  {formData.image.map(({ url, id }) => (
+                    <div
+                      className="image-container"
+                      alt="uploadedimage"
+                      key={id}
+                      onClick={() => deleteImgHandler(id)}
+                    >
+                      <img id="uploadedimage" src={url} alt="uploaded image" />
+                      <div className="image-container__delete">삭제</div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="admin__upload-row">
@@ -364,12 +359,12 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog, page, name }) => {
         </div>
       </div>
       <div className="modal-bg" onClick={handleClose}></div>
-      {/* {confirmOption.open && (
+      {confirmOption.open && (
         <ConfirmModal
           setConfirmOption={setConfirmOption}
           confirmOption={confirmOption}
         />
-      )} */}
+      )}
     </>
   );
 };

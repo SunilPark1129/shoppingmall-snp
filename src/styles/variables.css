@@ -26,6 +26,9 @@
   --clr-bg: #faf9f8;
   --clr-bg-lgt: #f5f5f5;
 
+  /* status */
+  --clr-warn: #f67575;
+
   /* max width */
   --max-width: 1400px;
 
