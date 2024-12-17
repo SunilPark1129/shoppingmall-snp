@@ -168,156 +168,159 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog, page, name }) => {
     }));
   };
 
+  useEffect(() => {
+    console.log(formData);
+  }, [formData, stock]);
+
+  if (!showDialog) return null;
+
   return (
     <>
       {/* show={showDialog} onHide={handleClose} */}
-      <div>
-        <div>
-          {mode === 'new' ? (
-            <div>Create New Product</div>
-          ) : (
-            <div>Edit Product</div>
-          )}
-        </div>
-        {error && (
-          <div className="error-message">
-            <div variant="danger">{error}</div>
-          </div>
-        )}
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>
-              Sku
-              <input
-                onChange={handleChange}
-                type="string"
-                placeholder="Enter Sku"
-                required
-                value={formData.sku}
-                autoComplete="off"
-              />
-            </label>
-
-            <label>
-              Name
-              <input
-                onChange={handleChange}
-                type="string"
-                placeholder="Name"
-                required
-                value={formData.name}
-                autoComplete="off"
-              />
-            </label>
-          </div>
-
-          <label>
-            Description
-            <input
-              type="string"
-              placeholder="Description"
-              onChange={handleChange}
-              value={formData.description}
-              required
-            />
-          </label>
-
-          <label>
-            Stock
-            {stockError && (
-              <span className="error-message">Please add stock</span>
+      <div className="admin__upload">
+        <div className="container">
+          <div className="admin__upload-header">
+            {mode === 'new' ? (
+              <div>Create New Product</div>
+            ) : (
+              <div>Edit Product</div>
             )}
-            <button type="button" onClick={addStock}>
-              Add +
-            </button>
-            <div>
-              {stock.map((item, index) => {
-                let key = item[2];
-                if (!key) key = item[0];
-                return (
-                  <div key={key}>
-                    <div>
-                      <select
-                        onChange={(event) =>
-                          handleSizeChange(event.target.value, index)
-                        }
-                        required
-                        defaultValue={item[0] ? item[0].toLowerCase() : ''}
-                      >
-                        <option value="" disabled hidden>
-                          Please Choose...
-                        </option>
-                        {SIZE.map((item, index) => (
-                          <option
-                            value={item.toLowerCase()}
-                            disabled={stock.some(
-                              (size) => size[0] === item.toLowerCase()
-                            )}
-                            key={index}
-                          >
-                            {item}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>
-                      <input
-                        onChange={(event) =>
-                          handleStockChange(event.target.value, index)
-                        }
-                        type="number"
-                        placeholder="number of stock"
-                        value={item[1]}
-                        min={0}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <button
-                        variant="danger"
-                        size="sm"
-                        onClick={() => deleteStock(index)}
-                      >
-                        -
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
+          </div>
+          {error && <div className="error-message">{error}</div>}
+          <form onSubmit={handleSubmit}>
+            <div className="admin__upload-row">
+              <label>
+                Sku
+                <input
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Enter Sku"
+                  required
+                  id="sku"
+                  value={formData.sku}
+                  autoComplete="off"
+                />
+              </label>
+
+              <label>
+                Name
+                <input
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Name"
+                  required
+                  id="name"
+                  value={formData.name}
+                  autoComplete="off"
+                />
+              </label>
             </div>
-          </label>
 
-          <div>
             <label>
-              Image
-              <CloudinaryUploadWidget
-                uwConfig={uwConfig}
-                uploadImage={uploadImage}
+              Description
+              <textarea
+                type="text"
+                placeholder="Description"
+                onChange={handleChange}
+                id="description"
+                value={formData.description}
+                required
               />
             </label>
-            {formData.image.length > 0 && (
-              <div className="upload-image-box">
-                {formData.image.map(({ url, id }) => (
-                  <div
-                    className="image-container"
-                    alt="uploadedimage"
-                    key={id}
-                    onClick={() => deleteImgHandler(id)}
-                  >
-                    <img
-                      id="uploadedimage"
-                      src={url}
-                      className="upload-image mt-2"
-                    />
-                    <div className="image-container__delete">삭제</div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
 
-          <div>
-            <label>
+            <div className="admin__upload-stock">
+              <label>
+                Stock
+                <button type="button" onClick={addStock}>
+                  Add +
+                </button>
+              </label>
+              {stockError && (
+                <span className="error-message">Please add stock</span>
+              )}
+              <div className="admin__upload-stock-list">
+                {stock.map((item, index) => {
+                  let key = item[2];
+                  if (!key) key = item[0];
+                  return (
+                    <div className="admin__upload-stock-item" key={key}>
+                      <div>
+                        <select
+                          onChange={(event) =>
+                            handleSizeChange(event.target.value, index)
+                          }
+                          required
+                          defaultValue={item[0] ? item[0].toLowerCase() : ''}
+                        >
+                          <option value="" disabled hidden>
+                            Please Choose...
+                          </option>
+                          {SIZE.map((item, index) => (
+                            <option
+                              value={item.toLowerCase()}
+                              disabled={stock.some(
+                                (size) => size[0] === item.toLowerCase()
+                              )}
+                              key={index}
+                            >
+                              {item}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div>
+                        <input
+                          onChange={(event) =>
+                            handleStockChange(event.target.value, index)
+                          }
+                          type="number"
+                          placeholder="number of stock"
+                          value={item[1]}
+                          min={0}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <button onClick={() => deleteStock(index)}>-</button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="admin__upload-image">
+              <label>
+                Image
+                <CloudinaryUploadWidget
+                  uwConfig={uwConfig}
+                  uploadImage={uploadImage}
+                />
+              </label>
+              <div className="admin__upload-image-list">
+                {formData.image.length > 0 && (
+                  <div className="admin__upload-image-card">
+                    {formData.image.map(({ url, id }) => (
+                      <div
+                        className="image-container"
+                        alt="uploadedimage"
+                        key={id}
+                        onClick={() => deleteImgHandler(id)}
+                      >
+                        <img
+                          id="uploadedimage"
+                          src={url}
+                          alt="uploaded image"
+                        />
+                        <div className="image-container__delete">삭제</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="admin__upload-row">
               <label>
                 Price
                 <input
@@ -325,14 +328,13 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog, page, name }) => {
                   required
                   onChange={handleChange}
                   type="number"
+                  id="price"
                   placeholder="0"
                   min={0}
                   step={'.01'}
                 />
               </label>
-            </label>
 
-            <label>
               <label>
                 Category
                 <select
@@ -348,32 +350,20 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog, page, name }) => {
                   ))}
                 </select>
               </label>
-            </label>
-
-            <label>
-              <label>
-                Status
-                <select
-                  value={formData.status}
-                  onChange={handleChange}
-                  required
-                >
-                  {STATUS.map((item, idx) => (
-                    <option key={idx} value={item.toLowerCase()}>
-                      {item}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </label>
-          </div>
-          {mode === 'new' ? (
-            <button type="submit">Submit</button>
-          ) : (
-            <button type="submit">Edit</button>
-          )}
-        </form>
+            </div>
+            {mode === 'new' ? (
+              <button className="admin__upload-submit" type="submit">
+                Submit
+              </button>
+            ) : (
+              <button className="admin__upload-submit" type="submit">
+                Edit
+              </button>
+            )}
+          </form>
+        </div>
       </div>
+      <div className="modal-bg" onClick={handleClose}></div>
       {/* {confirmOption.open && (
         <ConfirmModal
           setConfirmOption={setConfirmOption}
