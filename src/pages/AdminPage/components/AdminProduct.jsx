@@ -13,6 +13,7 @@ import ReactPaginate from 'react-paginate';
 import ProductTable from './ProductTable';
 import NewItemDialog from './NewItemDialog';
 import ConfirmModal from '../../../components/modal/ConfirmModal';
+import SaleForm from './SaleForm';
 
 function AdminProduct() {
   const navigate = useNavigate();
@@ -146,14 +147,14 @@ function AdminProduct() {
         name={queryName}
       />
 
-      {/* {openSaleForm.open && (
+      {openSaleForm.open && (
         <SaleForm
           openSaleForm={openSaleForm}
           setOpenSaleForm={setOpenSaleForm}
           page={queryPage}
           name={queryName}
         />
-      )} */}
+      )}
 
       {confirmOption.open && (
         <ConfirmModal

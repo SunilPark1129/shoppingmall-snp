@@ -37,16 +37,6 @@
   color: var(--clr-font);
   padding: 2em 0;
 }
-.admin .image-container {
-  width: 5rem;
-  aspect-ratio: 2/3;
-  position: relative;
-  border: 1px solid rgb(79, 79, 79);
-}
-.admin .image-container img {
-  opacity: 0.4;
-  filter: contrast(80%);
-}
 .admin .image-container__delete {
   position: absolute;
   width: 100%;
@@ -123,6 +113,16 @@
   padding: 1rem;
   gap: 1rem;
   pointer-events: all;
+}
+.admin__upload .image-container {
+  width: 5rem;
+  aspect-ratio: 2/3;
+  position: relative;
+  border: 1px solid rgb(79, 79, 79);
+}
+.admin__upload .image-container img {
+  opacity: 0.4;
+  filter: contrast(80%);
 }
 .admin__upload-header {
   font-size: 1.2em;
@@ -263,4 +263,60 @@
 .admin__product .active {
   background-color: var(--clr-primary);
   color: #fff;
+}
+
+.sale {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  max-width: 30rem;
+  width: 100%;
+}
+.sale .container {
+  display: flex;
+  gap: 1rem;
+  background-color: #fff;
+  padding: 1em;
+}
+.sale .image-container {
+  width: 8rem;
+  aspect-ratio: 2/3;
+  flex-shrink: 0;
+}
+.sale__text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.sale__title {
+  font-weight: bold;
+}
+.sale__btn-box {
+  margin-top: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+.sale__btn-box button {
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+}
+.sale__btn-box button:nth-of-type(1) {
+  background-color: var(--clr-primary);
+  color: #fff;
+}
+.sale__btn-box button:nth-of-type(2) {
+  background-color: rgb(228, 228, 228);
+}
+.sale__bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4705882353);
+  z-index: 998;
+  cursor: pointer;
 }/*# sourceMappingURL=index.css.map */
