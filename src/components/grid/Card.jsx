@@ -69,11 +69,7 @@ function Card({ item, isLast, page, totalPageNum, name, category, imgFront }) {
     >
       <div className="image-container">
         {item?.image.length === 1 ? (
-          imgFront ? (
-            <img {...firstImg} />
-          ) : (
-            <img {...secondImg} />
-          )
+          <img {...firstImg} />
         ) : imgFront ? (
           <React.Fragment>
             <img {...firstImg} />
