@@ -103,7 +103,7 @@ function Navbar({ user }) {
             <div className="navbar__top-box navbar__top-box--left">
               <Link className="navbar__logo" to={'/'}>
                 <div className="image-container">
-                  <img src="/image/sparklogo.png" alt="" />
+                  <img src="/image/sparklogo.png" alt="logo" />
                 </div>
               </Link>
               <div className="navbar__menu" onClick={handleModalOpen}>

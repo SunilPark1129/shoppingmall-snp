@@ -16,7 +16,7 @@
   gap: 1em;
 }
 .admin nav a {
-  color: var(--font-clr);
+  color: var(--clr-font);
   background-color: var(--clr-font-md);
   color: #eaeaea;
   padding: 0.15rem 1rem;

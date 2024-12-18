@@ -1,0 +1,33 @@
+.errorpage {
+  .container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .image-container {
+    width: 8em;
+    aspect-ratio: 1;
+    position: relative;
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  h1 {
+    font-weight: bold;
+    font-size: 2em;
+  }
+
+  p {
+    color: var(--clr-font);
+  }
+
+  a {
+    color: var(--clr-font-link);
+    text-decoration: underline;
+  }
+}
