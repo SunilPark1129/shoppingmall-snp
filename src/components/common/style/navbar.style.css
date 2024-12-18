@@ -11,8 +11,9 @@
   height: 3rem;
   position: fixed;
   top: 0;
-  background-color: var(--clr-bg);
+  background-color: #fff;
   z-index: 998;
+  border-bottom: 1px solid #e5e5e5;
 }
 .navbar__admin {
   color: #fff;
