@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import './banner.style.css';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { bannerImages } from '../../../../utils/bannerImage';
+import InfoIcon from '../../../../assets/icons/InfoIcon';
 
 function Banner() {
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -87,8 +86,7 @@ function TextComponent({ currentIdx }) {
       </h2>
       <div className="banner__text-desc">
         <p className={`banner__text-color`}>
-          <FontAwesomeIcon icon={faInfoCircle} />{' '}
-          {bannerImages[currentIdx].paragraph.text}
+          <InfoIcon /> {bannerImages[currentIdx].paragraph.text}
         </p>
         {bannerImages[currentIdx].link?.has && (
           <Link

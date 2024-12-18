@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { SvgSearch } from '../../svg/SVGFiles';
+import SearchIcon from '../../assets/icons/SearchIcon';
 
 function SearchBox({ placeholder, field }) {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ function SearchBox({ placeholder, field }) {
   return (
     <label className="searchbar mobile-disappear">
       <div className="searchbar__svg svg-box" onClick={handleSearch}>
-        {SvgSearch}
+        <SearchIcon />
       </div>
       <input
         type="text"

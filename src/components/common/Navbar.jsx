@@ -1,51 +1,38 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-regular-svg-icons';
-import {
-  faBars,
-  faBox,
-  faSearch,
-  faShoppingBag,
-} from '@fortawesome/free-solid-svg-icons';
+import React, { Fragment, useEffect, useState } from 'react';
 import './style/navbar.style.css';
-import { navLayout } from '../../data/navigationLinks';
 import {
   Link,
   useLocation,
   useSearchParams,
   useNavigate,
-  NavLink,
 } from 'react-router-dom';
-import { SvgSearch, SvgUser, SvgTable, SvgBag } from '../../svg/SVGFiles';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getLinkLists,
-  menList,
-  menuList,
-  womenList,
-} from '../../utils/navbarLinks';
+import { getLinkLists, menuList } from '../../utils/navbarLinks';
 import HamburgerIcon from '../../assets/icons/HamburgerIcon';
 import ExitIcon from '../../assets/icons/ExitIcon';
 import { logout } from '../../features/user/userSlice';
 import { getCartQty } from '../../features/cart/cartSlice';
+import SearchIcon from '../../assets/icons/SearchIcon';
+import BagIcon from '../../assets/icons/BagIcon';
+import TableIcon from '../../assets/icons/TableIcon';
+import UserIcon from '../../assets/icons/UserIcon';
 
 function Navbar({ user }) {
-  const serachRef = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const [query] = useSearchParams();
   const category = query.getAll('category');
   const [isModalOn, setIsModalOn] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
 
   const { cartItemCount } = useSelector((state) => state.cart);
   const [curCategory, setCurCategory] = useState('');
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
-    serachRef.current.value = '';
     if (category.length !== 0) {
-      // word exchange
       const exchange = category.map((item) => {
         if (item === 'female') return 'women';
         if (item === 'male') return 'men';
@@ -65,13 +52,19 @@ function Navbar({ user }) {
 
   const onCheckEnter = (event) => {
     if (event.key === 'Enter') {
-      handleSearch(event.target.value);
+      handleSearch();
     }
   };
 
-  const handleSearch = (val) => {
-    if (val.trim() === '') return;
-    navigate(`/?name=${val}`);
+  function handleSearchClick() {
+    setIsSearching((prev) => !prev);
+    setSearchValue('');
+  }
+
+  const handleSearch = () => {
+    if (searchValue.trim() === '') return;
+    navigate(`/?name=${searchValue}`);
+    handleSearchClick();
   };
 
   const handleLogin = () => {
@@ -93,7 +86,7 @@ function Navbar({ user }) {
   }, [user]);
 
   return (
-    <>
+    <Fragment>
       <div className="navbar-size"></div>
       <header className="navbar">
         {/* admin page button */}
@@ -110,65 +103,69 @@ function Navbar({ user }) {
                 <HamburgerIcon />
               </div>
             </div>
-            <div className="navbar__top-box navbar__top-box--right">
+            <div className="navbar__top-box navbar__top-box--right mobile-disappear">
               {user && user.level === 'admin' && (
                 <Link className="navbar__admin" to="/admin/product?page=1">
                   Admin page
                 </Link>
               )}
-
-              <label className="searchbar mobile-disappear">
-                <div
-                  className="searchbar__svg svg-box"
-                  onClick={() => handleSearch(serachRef.current.value)}
-                >
-                  {SvgSearch}
-                </div>
-                <input
-                  ref={serachRef}
-                  type="text"
-                  autoComplete="off"
-                  placeholder="Search Product"
-                  onKeyDown={onCheckEnter}
-                />
-              </label>
               <div className="navbar__top-feature">
+                <button className="navbar__search" onClick={handleSearchClick}>
+                  <SearchIcon />
+                </button>
                 <div onClick={() => navigate('/cart')}>
-                  <div className="svg-box">{SvgBag}</div>
+                  <div className="svg-box">
+                    <BagIcon />
+                  </div>
                   <span className="mobile-disappear">Cart</span>(
                   {cartItemCount || 0})
                 </div>
                 <div onClick={() => navigate('/order')}>
-                  <div className="svg-box">{SvgTable}</div>
+                  <div className="svg-box">
+                    <TableIcon />
+                  </div>
                   <span className="mobile-disappear"> My Order</span>
                 </div>
-                {user ? (
-                  <div
-                    onClick={handleLogout}
-                    className="navbar__login navbar__login--logout"
-                  >
-                    <div className="svg-box">{SvgUser}</div>
-                    <span> Logout</span>
-                  </div>
-                ) : (
-                  <div onClick={handleLogin} className="navbar__login">
-                    <div className="svg-box">{SvgUser}</div>
-                    <span> Login</span>
-                  </div>
-                )}
               </div>
             </div>
+            {user ? (
+              <div
+                onClick={handleLogout}
+                className="navbar__login navbar__login--logout"
+              >
+                <div className="svg-box">
+                  <UserIcon />
+                </div>
+                <span> Logout</span>
+              </div>
+            ) : (
+              <div onClick={handleLogin} className="navbar__login">
+                <div className="svg-box">
+                  <UserIcon />
+                </div>
+                <span> Login</span>
+              </div>
+            )}
           </div>
           <div className="navbar__bot mobile-appear">
-            <label className="searchbar">
-              <div className="searchbar__svg svg-box">{SvgSearch}</div>
-              <input
-                type="text"
-                autoComplete="off"
-                placeholder="Search Product"
-                onKeyDown={onCheckEnter}
-              />
-            </label>
+            <div className="navbar__top-feature">
+              <button className="navbar__search" onClick={handleSearchClick}>
+                <SearchIcon />
+              </button>
+              <div onClick={() => navigate('/cart')}>
+                <div className="svg-box">
+                  <BagIcon />
+                </div>
+                <span className="mobile-disappear">Cart</span>(
+                {cartItemCount || 0})
+              </div>
+              <div onClick={() => navigate('/order')}>
+                <div className="svg-box">
+                  <TableIcon />
+                </div>
+                <span className="mobile-disappear"> My Order</span>
+              </div>
+            </div>
           </div>
 
           {/* aside menu */}
@@ -251,7 +248,28 @@ function Navbar({ user }) {
           {/*  */}
         </nav>
       </header>
-    </>
+      {isSearching && (
+        <Fragment>
+          <div className="search-modal">
+            <div className="container">
+              <label>
+                <SearchIcon />
+                <input
+                  type="text"
+                  autoComplete="off"
+                  placeholder="Search Product..."
+                  value={searchValue}
+                  onChange={(e) => setSearchValue(e.target.value)}
+                  onKeyDown={onCheckEnter}
+                />
+              </label>
+              <button onClick={handleSearch}>ENTER</button>
+            </div>
+          </div>
+          <div className="search-bg" onClick={handleSearchClick}></div>
+        </Fragment>
+      )}
+    </Fragment>
   );
 }
 
