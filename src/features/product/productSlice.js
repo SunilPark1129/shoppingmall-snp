@@ -84,7 +84,7 @@ export const deleteProduct = createAsyncThunk(
     try {
       const response = await api.delete(`/product/${id}`);
       if (page) {
-        dispatch(getProductList({ page, name }));
+        dispatch(getAdminProductList({ page, name }));
       }
       return response.data.data;
     } catch (error) {

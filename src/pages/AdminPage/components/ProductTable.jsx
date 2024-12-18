@@ -45,11 +45,26 @@ const ProductTable = ({
                 </td>
                 <td>{item.status}</td>
                 <td>
-                  <button onClick={() => deleteItem(item._id)}>-</button>
-                  <button onClick={() => openEditForm(item)}>Edit</button>
-                  <button onClick={() => setOpenSaleForm({ open: true, item })}>
-                    Sale
-                  </button>
+                  <div className="product-table__btn-box">
+                    <button
+                      className="product-table__btn product-table__btn--remove"
+                      onClick={() => deleteItem(item._id)}
+                    >
+                      -
+                    </button>
+                    <button
+                      className="product-table__btn product-table__btn--edit"
+                      onClick={() => openEditForm(item)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="product-table__btn product-table__btn--sale"
+                      onClick={() => setOpenSaleForm({ open: true, item })}
+                    >
+                      Sale
+                    </button>
+                  </div>
                 </td>
               </tr>
             );

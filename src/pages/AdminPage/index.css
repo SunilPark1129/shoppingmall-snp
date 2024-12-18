@@ -91,6 +91,27 @@
 .admin__product table tbody td:nth-of-type(2) {
   width: 100%;
 }
+.admin__product .product-table__sale {
+  color: var(--clr-warn);
+  font-weight: bold;
+}
+.admin__product .product-table__btn-box {
+  display: flex;
+  gap: 0.25rem;
+}
+.admin__product .product-table__btn {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+.admin__product .product-table__btn--remove {
+  background-color: var(--clr-warn);
+}
+.admin__product .product-table__btn--edit {
+  background-color: rgb(189, 189, 226);
+}
+.admin__product .product-table__btn--sale {
+  background-color: rgb(189, 226, 193);
+}
 
 .admin__upload {
   position: fixed;

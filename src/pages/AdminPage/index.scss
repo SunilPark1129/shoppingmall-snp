@@ -108,6 +108,30 @@
       }
     }
   }
+
+  .product-table {
+    &__sale {
+      color: var(--clr-warn);
+      font-weight: bold;
+    }
+    &__btn-box {
+      display: flex;
+      gap: 0.25rem;
+    }
+    &__btn {
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      &--remove {
+        background-color: var(--clr-warn);
+      }
+      &--edit {
+        background-color: rgb(189, 189, 226);
+      }
+      &--sale {
+        background-color: rgb(189, 226, 193);
+      }
+    }
+  }
 }
 
 .admin__upload {
