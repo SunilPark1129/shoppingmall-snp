@@ -103,7 +103,7 @@ function Navbar({ user }) {
                 <HamburgerIcon />
               </div>
             </div>
-            <div className="navbar__top-box navbar__top-box--right mobile-disappear">
+            <div className="navbar__top-box navbar__top-box--right">
               {user && user.level === 'admin' && (
                 <Link className="navbar__admin" to="/admin/product?page=1">
                   Admin page
@@ -147,7 +147,7 @@ function Navbar({ user }) {
               </div>
             )}
           </div>
-          <div className="navbar__bot mobile-appear">
+          {/* <div className="navbar__bot mobile-appear">
             <div className="navbar__top-feature">
               <button className="navbar__search" onClick={handleSearchClick}>
                 <SearchIcon />
@@ -166,7 +166,7 @@ function Navbar({ user }) {
                 <span className="mobile-disappear"> My Order</span>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* aside menu */}
           <div
