@@ -27,7 +27,6 @@ Go to website - [Link](https://snp-clothing.netlify.app/)<br>
 
 |Feature|Image|
 |:--:|:--|
-|Auto Image Converter||
 |Product Detail Page|<img src="https://github.com/user-attachments/assets/43a9b28d-34ab-4400-98d7-5bfe768a2649" height="400">|
 |Login Page|<img src="https://github.com/user-attachments/assets/5367843b-09fa-46f5-a591-30c4fff283d4" height="400">|
 |Cart Information Page|<img src="https://github.com/user-attachments/assets/edb1a947-b6a1-4197-8976-e7190635a519" height="400">|
