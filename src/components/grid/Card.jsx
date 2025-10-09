@@ -19,7 +19,11 @@ function Card({ item, isLast, page, totalPageNum, name, category, imgFront }) {
     navigate(`/product/${id}`);
   };
 
-  const isVisible = useInfiniteScroll(lastIdxRef, { threshold: 1.0 });
+  const isVisible = useInfiniteScroll(lastIdxRef, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5,
+  });
 
   useEffect(() => {
     if (isLast && isVisible && totalPageNum > page) {
