@@ -2,6 +2,7 @@
 ![front_page](https://github.com/user-attachments/assets/40bb034f-f95d-476b-b7d8-dff779d38871)
 
 Go to website - [Link](https://snp-clothing.netlify.app/)<br>
+*Currently, this website is disabled.
 
 ## Project Description
 
